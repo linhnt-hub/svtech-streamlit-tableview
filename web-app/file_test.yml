@@ -1,0 +1,11 @@
+---
+juniper_config_igmp_interface99Table:
+    item: //configuration/protocols/igmp/interface
+    key: name
+    rpc: get-configuration
+    view: _juniper_config_igmp_interface99_view
+_juniper_config_igmp_interface99_view:
+    fields:
+        interface-name: name
+        promiscuous-mode: promiscuous-mode
+        ssm-map-policy: ssm-map-policy

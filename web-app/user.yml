@@ -1,0 +1,8 @@
+---
+UserTable:
+  get: system/login/user
+  view: UserView
+UserView:
+  fields:
+    username: name
+    userclass: class
