@@ -25,3 +25,1376 @@
   Network URL: http://10.98.12.70:8501
   External URL: http://113.190.233.64:8501
 
+/usr/local/lib/python3.10/dist-packages/jnpr/junos/device.py:724: RuntimeWarning: 
+CLI command is for debug use only!
+Instead of:
+cli('show arp')
+Use:
+rpc.get_arp_table_information()
+
+  warnings.warn(warning_string, RuntimeWarning)
+/usr/local/lib/python3.10/dist-packages/ncclient/operations/rpc.py:361: DeprecationWarning: isSet() is deprecated, use is_set() instead
+  if self._event.isSet():
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:64: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/conf_get_table.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:64: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_protocols.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:64: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_hardware.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:64: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_system.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:64: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_services.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:418: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/conf_get_table.yml' mode='r' encoding='UTF-8'>
+  edit_file_yml = yaml.load(open(edit_path_out,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:64: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/conf_get_table.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:64: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_protocols.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:64: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_hardware.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:64: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_system.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:64: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_services.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:418: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/conf_get_table.yml' mode='r' encoding='UTF-8'>
+  edit_file_yml = yaml.load(open(edit_path_out,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:64: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/conf_get_table.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:64: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_protocols.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:64: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_hardware.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:64: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_system.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:64: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_services.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:418: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/conf_get_table.yml' mode='r' encoding='UTF-8'>
+  edit_file_yml = yaml.load(open(edit_path_out,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/local/lib/python3.10/dist-packages/ncclient/transport/session.py:44: DeprecationWarning: setDaemon() is deprecated, set the daemon attribute instead
+  self.setDaemon(True)
+/usr/local/lib/python3.10/dist-packages/ncclient/transport/session.py:47: DeprecationWarning: setName() is deprecated, set the name attribute instead
+  self.setName('session')
+WARNING:root:Sub tableview is empty, filling value None to avoid error during subsequent data conversion
+ERROR:root:Failed to convert table data [ juniper_config_policy_term_community_conditionTable:10.96.10.96: 0 items ] to dataframe due to [ DataFrame constructor not properly called! ]
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:64: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/conf_get_table.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:64: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_protocols.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:64: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_hardware.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:64: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_system.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:64: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_services.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:418: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_services.yml' mode='r' encoding='UTF-8'>
+  edit_file_yml = yaml.load(open(edit_path_out,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:64: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/conf_get_table.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:64: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_protocols.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:64: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_hardware.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:64: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_system.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:64: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_services.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:418: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_protocols.yml' mode='r' encoding='UTF-8'>
+  edit_file_yml = yaml.load(open(edit_path_out,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:64: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/conf_get_table.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:64: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_protocols.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:64: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_hardware.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:64: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_system.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:64: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_services.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:418: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_protocols.yml' mode='r' encoding='UTF-8'>
+  edit_file_yml = yaml.load(open(edit_path_out,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:64: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/conf_get_table.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:64: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_protocols.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:64: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_hardware.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:64: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_system.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:64: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_services.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:418: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_protocols.yml' mode='r' encoding='UTF-8'>
+  edit_file_yml = yaml.load(open(edit_path_out,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:64: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/conf_get_table.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:64: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_protocols.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:64: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_hardware.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:64: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_system.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:64: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_services.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:418: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_hardware.yml' mode='r' encoding='UTF-8'>
+  edit_file_yml = yaml.load(open(edit_path_out,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:64: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/conf_get_table.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:64: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_protocols.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:64: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_hardware.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:64: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_system.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:64: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_services.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:418: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_hardware.yml' mode='r' encoding='UTF-8'>
+  edit_file_yml = yaml.load(open(edit_path_out,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:64: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/conf_get_table.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:64: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_protocols.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:64: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_hardware.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:64: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_system.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:64: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_services.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:418: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_hardware.yml' mode='r' encoding='UTF-8'>
+  edit_file_yml = yaml.load(open(edit_path_out,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:64: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/conf_get_table.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:64: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_protocols.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:64: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_hardware.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:64: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_system.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:64: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_services.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:418: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_hardware.yml' mode='r' encoding='UTF-8'>
+  edit_file_yml = yaml.load(open(edit_path_out,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:64: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/conf_get_table.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:64: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_protocols.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:64: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_hardware.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:64: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_system.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:64: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_services.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:418: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_hardware.yml' mode='r' encoding='UTF-8'>
+  edit_file_yml = yaml.load(open(edit_path_out,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:63: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/conf_get_table.yml' mode='r' encoding='UTF-8'>
+  path = "/opt/SVTECH-Junos-Automation/Junos_tableview/" + list_file_result[j]
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:63: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_protocols.yml' mode='r' encoding='UTF-8'>
+  path = "/opt/SVTECH-Junos-Automation/Junos_tableview/" + list_file_result[j]
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:63: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_hardware.yml' mode='r' encoding='UTF-8'>
+  path = "/opt/SVTECH-Junos-Automation/Junos_tableview/" + list_file_result[j]
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:63: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_system.yml' mode='r' encoding='UTF-8'>
+  path = "/opt/SVTECH-Junos-Automation/Junos_tableview/" + list_file_result[j]
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:63: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_services.yml' mode='r' encoding='UTF-8'>
+  path = "/opt/SVTECH-Junos-Automation/Junos_tableview/" + list_file_result[j]
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:417: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_hardware.yml' mode='r' encoding='UTF-8'>
+  edit_path_out = dict_path.get(option)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:63: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/conf_get_table.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:63: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_protocols.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:63: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_hardware.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:63: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_system.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:63: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_services.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:63: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/conf_get_table.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:63: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_protocols.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:63: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_hardware.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:63: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_system.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:63: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_services.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:63: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/conf_get_table.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:63: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_protocols.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:63: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_hardware.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:63: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_system.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:63: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_services.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/local/lib/python3.10/dist-packages/jnpr/junos/device.py:724: RuntimeWarning: 
+CLI command is for debug use only!
+Instead of:
+cli('show bgp summary')
+Use:
+rpc.get_bgp_summary_information()
+
+  warnings.warn(warning_string, RuntimeWarning)
+/usr/local/lib/python3.10/dist-packages/ncclient/operations/rpc.py:361: DeprecationWarning: isSet() is deprecated, use is_set() instead
+  if self._event.isSet():
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/conf_get_table.yml' mode='r' encoding='UTF-8'>
+  path = "/opt/SVTECH-Junos-Automation/Junos_tableview/" + list_file_result[j]
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_protocols.yml' mode='r' encoding='UTF-8'>
+  path = "/opt/SVTECH-Junos-Automation/Junos_tableview/" + list_file_result[j]
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_hardware.yml' mode='r' encoding='UTF-8'>
+  path = "/opt/SVTECH-Junos-Automation/Junos_tableview/" + list_file_result[j]
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_system.yml' mode='r' encoding='UTF-8'>
+  path = "/opt/SVTECH-Junos-Automation/Junos_tableview/" + list_file_result[j]
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_services.yml' mode='r' encoding='UTF-8'>
+  path = "/opt/SVTECH-Junos-Automation/Junos_tableview/" + list_file_result[j]
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/conf_get_table.yml' mode='r' encoding='UTF-8'>
+  path = "/opt/SVTECH-Junos-Automation/Junos_tableview/" + list_file_result[j]
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_protocols.yml' mode='r' encoding='UTF-8'>
+  path = "/opt/SVTECH-Junos-Automation/Junos_tableview/" + list_file_result[j]
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_hardware.yml' mode='r' encoding='UTF-8'>
+  path = "/opt/SVTECH-Junos-Automation/Junos_tableview/" + list_file_result[j]
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_system.yml' mode='r' encoding='UTF-8'>
+  path = "/opt/SVTECH-Junos-Automation/Junos_tableview/" + list_file_result[j]
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_services.yml' mode='r' encoding='UTF-8'>
+  path = "/opt/SVTECH-Junos-Automation/Junos_tableview/" + list_file_result[j]
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/conf_get_table.yml' mode='r' encoding='UTF-8'>
+  path = "/opt/SVTECH-Junos-Automation/Junos_tableview/" + list_file_result[j]
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_protocols.yml' mode='r' encoding='UTF-8'>
+  path = "/opt/SVTECH-Junos-Automation/Junos_tableview/" + list_file_result[j]
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_hardware.yml' mode='r' encoding='UTF-8'>
+  path = "/opt/SVTECH-Junos-Automation/Junos_tableview/" + list_file_result[j]
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_system.yml' mode='r' encoding='UTF-8'>
+  path = "/opt/SVTECH-Junos-Automation/Junos_tableview/" + list_file_result[j]
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_services.yml' mode='r' encoding='UTF-8'>
+  path = "/opt/SVTECH-Junos-Automation/Junos_tableview/" + list_file_result[j]
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/conf_get_table.yml' mode='r' encoding='UTF-8'>
+  path = "/opt/SVTECH-Junos-Automation/Junos_tableview/" + list_file_result[j]
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_protocols.yml' mode='r' encoding='UTF-8'>
+  path = "/opt/SVTECH-Junos-Automation/Junos_tableview/" + list_file_result[j]
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_hardware.yml' mode='r' encoding='UTF-8'>
+  path = "/opt/SVTECH-Junos-Automation/Junos_tableview/" + list_file_result[j]
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_system.yml' mode='r' encoding='UTF-8'>
+  path = "/opt/SVTECH-Junos-Automation/Junos_tableview/" + list_file_result[j]
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_services.yml' mode='r' encoding='UTF-8'>
+  path = "/opt/SVTECH-Junos-Automation/Junos_tableview/" + list_file_result[j]
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/conf_get_table.yml' mode='r' encoding='UTF-8'>
+  path = "/opt/SVTECH-Junos-Automation/Junos_tableview/" + list_file_result[j]
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_protocols.yml' mode='r' encoding='UTF-8'>
+  path = "/opt/SVTECH-Junos-Automation/Junos_tableview/" + list_file_result[j]
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_hardware.yml' mode='r' encoding='UTF-8'>
+  path = "/opt/SVTECH-Junos-Automation/Junos_tableview/" + list_file_result[j]
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_system.yml' mode='r' encoding='UTF-8'>
+  path = "/opt/SVTECH-Junos-Automation/Junos_tableview/" + list_file_result[j]
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_services.yml' mode='r' encoding='UTF-8'>
+  path = "/opt/SVTECH-Junos-Automation/Junos_tableview/" + list_file_result[j]
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+  You can now view your Streamlit app in your browser.
+
+  Network URL: http://10.98.12.70:8501
+  External URL: http://113.190.233.64:8501
+
+/usr/local/lib/python3.10/dist-packages/jnpr/junos/device.py:724: RuntimeWarning: 
+CLI command is for debug use only!
+Instead of:
+cli('show arp')
+Use:
+rpc.get_arp_table_information()
+
+  warnings.warn(warning_string, RuntimeWarning)
+/usr/local/lib/python3.10/dist-packages/ncclient/operations/rpc.py:361: DeprecationWarning: isSet() is deprecated, use is_set() instead
+  if self._event.isSet():
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/conf_get_table.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_protocols.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_hardware.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_system.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_services.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/local/lib/python3.10/dist-packages/ncclient/transport/session.py:44: DeprecationWarning: setDaemon() is deprecated, set the daemon attribute instead
+  self.setDaemon(True)
+/usr/local/lib/python3.10/dist-packages/ncclient/transport/session.py:47: DeprecationWarning: setName() is deprecated, set the name attribute instead
+  self.setName('session')
+/usr/local/lib/python3.10/dist-packages/jnpr/junos/device.py:724: RuntimeWarning: 
+CLI command is for debug use only!
+Instead of:
+cli('show isis adjacency')
+Use:
+rpc.get_isis_adjacency_information()
+
+  warnings.warn(warning_string, RuntimeWarning)
+/usr/local/lib/python3.10/dist-packages/ncclient/operations/rpc.py:361: DeprecationWarning: isSet() is deprecated, use is_set() instead
+  if self._event.isSet():
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/conf_get_table.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_protocols.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_hardware.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_system.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_services.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:416: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/conf_get_table.yml' mode='r' encoding='UTF-8'>
+  edit_file_yml = yaml.load(open(edit_path_out,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/conf_get_table.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_protocols.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_hardware.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_system.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_services.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:416: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_system.yml' mode='r' encoding='UTF-8'>
+  edit_file_yml = yaml.load(open(edit_path_out,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/conf_get_table.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_protocols.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_hardware.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_system.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_services.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:416: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_system.yml' mode='r' encoding='UTF-8'>
+  edit_file_yml = yaml.load(open(edit_path_out,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/conf_get_table.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_protocols.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_hardware.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_system.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_services.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:416: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_system.yml' mode='r' encoding='UTF-8'>
+  edit_file_yml = yaml.load(open(edit_path_out,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/local/lib/python3.10/dist-packages/ncclient/transport/session.py:44: DeprecationWarning: setDaemon() is deprecated, set the daemon attribute instead
+  self.setDaemon(True)
+/usr/local/lib/python3.10/dist-packages/ncclient/transport/session.py:47: DeprecationWarning: setName() is deprecated, set the name attribute instead
+  self.setName('session')
+WARNING:root:Sub tableview is empty, filling value None to avoid error during subsequent data conversion
+ERROR:root:Failed to convert table data [ SystemAlarmTable:10.99.94.1: 0 items ] to dataframe due to [ DataFrame constructor not properly called! ]
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/conf_get_table.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_protocols.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_hardware.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_system.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_services.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:416: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_system.yml' mode='r' encoding='UTF-8'>
+  edit_file_yml = yaml.load(open(edit_path_out,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/conf_get_table.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_protocols.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_hardware.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_system.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_services.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/conf_get_table.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_protocols.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_hardware.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_system.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_services.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:416: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_protocols.yml' mode='r' encoding='UTF-8'>
+  edit_file_yml = yaml.load(open(edit_path_out,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/conf_get_table.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_protocols.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_hardware.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_system.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_services.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:416: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_protocols.yml' mode='r' encoding='UTF-8'>
+  edit_file_yml = yaml.load(open(edit_path_out,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/conf_get_table.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_protocols.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_hardware.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_system.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_services.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:416: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_protocols.yml' mode='r' encoding='UTF-8'>
+  edit_file_yml = yaml.load(open(edit_path_out,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/conf_get_table.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_protocols.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_hardware.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_system.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_services.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:416: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_protocols.yml' mode='r' encoding='UTF-8'>
+  edit_file_yml = yaml.load(open(edit_path_out,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/conf_get_table.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_protocols.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_hardware.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_system.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_services.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/conf_get_table.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_protocols.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_hardware.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_system.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_services.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/conf_get_table.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/conf_get_table.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_protocols.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_hardware.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_system.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_services.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/conf_get_table.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_protocols.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_hardware.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/conf_get_table.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_system.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_services.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_protocols.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_hardware.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_system.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_services.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_protocols.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_hardware.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_system.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_services.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/conf_get_table.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_protocols.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_hardware.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_system.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_services.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/local/lib/python3.10/dist-packages/jnpr/junos/device.py:724: RuntimeWarning: 
+CLI command is for debug use only!
+Instead of:
+cli('show bgp summary')
+Use:
+rpc.get_bgp_summary_information()
+
+  warnings.warn(warning_string, RuntimeWarning)
+/usr/local/lib/python3.10/dist-packages/ncclient/operations/rpc.py:361: DeprecationWarning: isSet() is deprecated, use is_set() instead
+  if self._event.isSet():
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/conf_get_table.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_protocols.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_hardware.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_system.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_services.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/local/lib/python3.10/dist-packages/ncclient/transport/session.py:44: DeprecationWarning: setDaemon() is deprecated, set the daemon attribute instead
+  self.setDaemon(True)
+/usr/local/lib/python3.10/dist-packages/ncclient/transport/session.py:47: DeprecationWarning: setName() is deprecated, set the name attribute instead
+  self.setName('session')
+/usr/local/lib/python3.10/dist-packages/jnpr/junos/device.py:724: RuntimeWarning: 
+CLI command is for debug use only!
+Instead of:
+cli('show bgp group')
+Use:
+rpc.get_bgp_group_information()
+
+  warnings.warn(warning_string, RuntimeWarning)
+/usr/local/lib/python3.10/dist-packages/ncclient/operations/rpc.py:361: DeprecationWarning: isSet() is deprecated, use is_set() instead
+  if self._event.isSet():
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/conf_get_table.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_protocols.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_hardware.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_system.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_services.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/local/lib/python3.10/dist-packages/ncclient/transport/session.py:44: DeprecationWarning: setDaemon() is deprecated, set the daemon attribute instead
+  self.setDaemon(True)
+/usr/local/lib/python3.10/dist-packages/ncclient/transport/session.py:47: DeprecationWarning: setName() is deprecated, set the name attribute instead
+  self.setName('session')
+/usr/local/lib/python3.10/dist-packages/jnpr/junos/device.py:724: RuntimeWarning: 
+CLI command is for debug use only!
+Instead of:
+cli('show bgp group brief ')
+Use:
+rpc.get_bgp_group_information(brief=True)
+
+  warnings.warn(warning_string, RuntimeWarning)
+/usr/local/lib/python3.10/dist-packages/ncclient/operations/rpc.py:361: DeprecationWarning: isSet() is deprecated, use is_set() instead
+  if self._event.isSet():
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/conf_get_table.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_protocols.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_hardware.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_system.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_services.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/local/lib/python3.10/dist-packages/ncclient/transport/session.py:44: DeprecationWarning: setDaemon() is deprecated, set the daemon attribute instead
+  self.setDaemon(True)
+/usr/local/lib/python3.10/dist-packages/ncclient/transport/session.py:47: DeprecationWarning: setName() is deprecated, set the name attribute instead
+  self.setName('session')
+/usr/local/lib/python3.10/dist-packages/jnpr/junos/device.py:724: RuntimeWarning: 
+CLI command is for debug use only!
+Instead of:
+cli('show isis adjacency detail ')
+Use:
+rpc.get_isis_adjacency_information(detail=True)
+
+  warnings.warn(warning_string, RuntimeWarning)
+/usr/local/lib/python3.10/dist-packages/ncclient/operations/rpc.py:361: DeprecationWarning: isSet() is deprecated, use is_set() instead
+  if self._event.isSet():
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/conf_get_table.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_protocols.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_hardware.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_system.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_services.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/local/lib/python3.10/dist-packages/ncclient/transport/session.py:44: DeprecationWarning: setDaemon() is deprecated, set the daemon attribute instead
+  self.setDaemon(True)
+/usr/local/lib/python3.10/dist-packages/ncclient/transport/session.py:47: DeprecationWarning: setName() is deprecated, set the name attribute instead
+  self.setName('session')
+/usr/local/lib/python3.10/dist-packages/jnpr/junos/device.py:724: RuntimeWarning: 
+CLI command is for debug use only!
+Instead of:
+cli('show route protocol ospf')
+Use:
+rpc.get_route_information(protocol='ospf')
+
+  warnings.warn(warning_string, RuntimeWarning)
+/usr/local/lib/python3.10/dist-packages/ncclient/operations/rpc.py:361: DeprecationWarning: isSet() is deprecated, use is_set() instead
+  if self._event.isSet():
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/conf_get_table.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_protocols.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_hardware.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_system.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_services.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/local/lib/python3.10/dist-packages/ncclient/transport/session.py:44: DeprecationWarning: setDaemon() is deprecated, set the daemon attribute instead
+  self.setDaemon(True)
+/usr/local/lib/python3.10/dist-packages/ncclient/transport/session.py:47: DeprecationWarning: setName() is deprecated, set the name attribute instead
+  self.setName('session')
+/usr/local/lib/python3.10/dist-packages/jnpr/junos/device.py:724: RuntimeWarning: 
+CLI command is for debug use only!
+Instead of:
+cli('show route protocol ospf 192.168.11.1/32')
+Use:
+rpc.get_route_information(destination='192.168.11.1/32', protocol='ospf')
+
+  warnings.warn(warning_string, RuntimeWarning)
+/usr/local/lib/python3.10/dist-packages/ncclient/operations/rpc.py:361: DeprecationWarning: isSet() is deprecated, use is_set() instead
+  if self._event.isSet():
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/conf_get_table.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_protocols.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_hardware.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_system.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_services.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/local/lib/python3.10/dist-packages/ncclient/transport/session.py:44: DeprecationWarning: setDaemon() is deprecated, set the daemon attribute instead
+  self.setDaemon(True)
+/usr/local/lib/python3.10/dist-packages/ncclient/transport/session.py:47: DeprecationWarning: setName() is deprecated, set the name attribute instead
+  self.setName('session')
+/usr/local/lib/python3.10/dist-packages/jnpr/junos/device.py:724: RuntimeWarning: 
+CLI command is for debug use only!
+Instead of:
+cli('show route protocol ospf 192.168.11.1/32')
+Use:
+rpc.get_route_information(destination='192.168.11.1/32', protocol='ospf')
+
+  warnings.warn(warning_string, RuntimeWarning)
+/usr/local/lib/python3.10/dist-packages/ncclient/operations/rpc.py:361: DeprecationWarning: isSet() is deprecated, use is_set() instead
+  if self._event.isSet():
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/conf_get_table.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_protocols.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_hardware.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_system.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_services.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/local/lib/python3.10/dist-packages/ncclient/transport/session.py:44: DeprecationWarning: setDaemon() is deprecated, set the daemon attribute instead
+  self.setDaemon(True)
+/usr/local/lib/python3.10/dist-packages/ncclient/transport/session.py:47: DeprecationWarning: setName() is deprecated, set the name attribute instead
+  self.setName('session')
+/usr/local/lib/python3.10/dist-packages/jnpr/junos/device.py:724: RuntimeWarning: 
+CLI command is for debug use only!
+Instead of:
+cli('show route protocol ospf 192.168.11.12/32')
+Use:
+rpc.get_route_information(destination='192.168.11.12/32', protocol='ospf')
+
+  warnings.warn(warning_string, RuntimeWarning)
+/usr/local/lib/python3.10/dist-packages/ncclient/operations/rpc.py:361: DeprecationWarning: isSet() is deprecated, use is_set() instead
+  if self._event.isSet():
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/conf_get_table.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_protocols.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_hardware.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_system.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_services.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/local/lib/python3.10/dist-packages/ncclient/transport/session.py:44: DeprecationWarning: setDaemon() is deprecated, set the daemon attribute instead
+  self.setDaemon(True)
+/usr/local/lib/python3.10/dist-packages/ncclient/transport/session.py:47: DeprecationWarning: setName() is deprecated, set the name attribute instead
+  self.setName('session')
+/usr/local/lib/python3.10/dist-packages/jnpr/junos/device.py:724: RuntimeWarning: 
+CLI command is for debug use only!
+Instead of:
+cli('show route protocol ospf 192.168.11.1/32')
+Use:
+rpc.get_route_information(destination='192.168.11.1/32', protocol='ospf')
+
+  warnings.warn(warning_string, RuntimeWarning)
+/usr/local/lib/python3.10/dist-packages/ncclient/operations/rpc.py:361: DeprecationWarning: isSet() is deprecated, use is_set() instead
+  if self._event.isSet():
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/conf_get_table.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_protocols.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_hardware.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_system.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_services.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:416: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/conf_get_table.yml' mode='r' encoding='UTF-8'>
+  edit_file_yml = yaml.load(open(edit_path_out,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/conf_get_table.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_protocols.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_hardware.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_system.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_services.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:416: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/conf_get_table.yml' mode='r' encoding='UTF-8'>
+  edit_file_yml = yaml.load(open(edit_path_out,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/conf_get_table.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_protocols.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_hardware.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_system.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_services.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:416: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/conf_get_table.yml' mode='r' encoding='UTF-8'>
+  edit_file_yml = yaml.load(open(edit_path_out,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/conf_get_table.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_protocols.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_hardware.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_system.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_services.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:416: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/conf_get_table.yml' mode='r' encoding='UTF-8'>
+  edit_file_yml = yaml.load(open(edit_path_out,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/conf_get_table.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_protocols.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_hardware.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_system.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_services.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:416: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/conf_get_table.yml' mode='r' encoding='UTF-8'>
+  edit_file_yml = yaml.load(open(edit_path_out,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/conf_get_table.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_protocols.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_hardware.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_system.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_services.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:416: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/conf_get_table.yml' mode='r' encoding='UTF-8'>
+  edit_file_yml = yaml.load(open(edit_path_out,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/conf_get_table.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_protocols.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_hardware.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_system.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_services.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:416: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/conf_get_table.yml' mode='r' encoding='UTF-8'>
+  edit_file_yml = yaml.load(open(edit_path_out,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/local/lib/python3.10/dist-packages/ncclient/transport/session.py:44: DeprecationWarning: setDaemon() is deprecated, set the daemon attribute instead
+  self.setDaemon(True)
+/usr/local/lib/python3.10/dist-packages/ncclient/transport/session.py:47: DeprecationWarning: setName() is deprecated, set the name attribute instead
+  self.setName('session')
+/usr/local/lib/python3.10/dist-packages/jnpr/junos/device.py:724: RuntimeWarning: 
+CLI command is for debug use only!
+Instead of:
+cli('show route protocol ospf 192.168.11.1/32')
+Use:
+rpc.get_route_information(destination='192.168.11.1/32', protocol='ospf')
+
+  warnings.warn(warning_string, RuntimeWarning)
+/usr/local/lib/python3.10/dist-packages/ncclient/operations/rpc.py:361: DeprecationWarning: isSet() is deprecated, use is_set() instead
+  if self._event.isSet():
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/conf_get_table.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_protocols.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_hardware.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_system.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_services.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:416: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/conf_get_table.yml' mode='r' encoding='UTF-8'>
+  edit_file_yml = yaml.load(open(edit_path_out,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/local/lib/python3.10/dist-packages/ncclient/transport/session.py:44: DeprecationWarning: setDaemon() is deprecated, set the daemon attribute instead
+  self.setDaemon(True)
+/usr/local/lib/python3.10/dist-packages/ncclient/transport/session.py:47: DeprecationWarning: setName() is deprecated, set the name attribute instead
+  self.setName('session')
+/usr/local/lib/python3.10/dist-packages/jnpr/junos/device.py:724: RuntimeWarning: 
+CLI command is for debug use only!
+Instead of:
+cli('show route protocol ospf 192.168.11.1/32')
+Use:
+rpc.get_route_information(destination='192.168.11.1/32', protocol='ospf')
+
+  warnings.warn(warning_string, RuntimeWarning)
+/usr/local/lib/python3.10/dist-packages/ncclient/operations/rpc.py:361: DeprecationWarning: isSet() is deprecated, use is_set() instead
+  if self._event.isSet():
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/conf_get_table.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_protocols.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_hardware.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_system.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_services.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:416: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/conf_get_table.yml' mode='r' encoding='UTF-8'>
+  edit_file_yml = yaml.load(open(edit_path_out,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/local/lib/python3.10/dist-packages/ncclient/transport/session.py:44: DeprecationWarning: setDaemon() is deprecated, set the daemon attribute instead
+  self.setDaemon(True)
+/usr/local/lib/python3.10/dist-packages/ncclient/transport/session.py:47: DeprecationWarning: setName() is deprecated, set the name attribute instead
+  self.setName('session')
+/usr/local/lib/python3.10/dist-packages/jnpr/junos/device.py:724: RuntimeWarning: 
+CLI command is for debug use only!
+Instead of:
+cli('show route protocol ospf 0.0.0.0/0')
+Use:
+rpc.get_route_information(destination='0.0.0.0/0', protocol='ospf')
+
+  warnings.warn(warning_string, RuntimeWarning)
+/usr/local/lib/python3.10/dist-packages/ncclient/operations/rpc.py:361: DeprecationWarning: isSet() is deprecated, use is_set() instead
+  if self._event.isSet():
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/conf_get_table.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_protocols.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_hardware.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_system.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_services.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:416: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/conf_get_table.yml' mode='r' encoding='UTF-8'>
+  edit_file_yml = yaml.load(open(edit_path_out,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/local/lib/python3.10/dist-packages/ncclient/transport/session.py:44: DeprecationWarning: setDaemon() is deprecated, set the daemon attribute instead
+  self.setDaemon(True)
+/usr/local/lib/python3.10/dist-packages/ncclient/transport/session.py:47: DeprecationWarning: setName() is deprecated, set the name attribute instead
+  self.setName('session')
+/usr/local/lib/python3.10/dist-packages/jnpr/junos/device.py:724: RuntimeWarning: 
+CLI command is for debug use only!
+Instead of:
+cli('show route protocol ospf')
+Use:
+rpc.get_route_information(protocol='ospf')
+
+  warnings.warn(warning_string, RuntimeWarning)
+/usr/local/lib/python3.10/dist-packages/ncclient/operations/rpc.py:361: DeprecationWarning: isSet() is deprecated, use is_set() instead
+  if self._event.isSet():
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/conf_get_table.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_protocols.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_hardware.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_system.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_services.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:416: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/conf_get_table.yml' mode='r' encoding='UTF-8'>
+  edit_file_yml = yaml.load(open(edit_path_out,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/local/lib/python3.10/dist-packages/ncclient/transport/session.py:44: DeprecationWarning: setDaemon() is deprecated, set the daemon attribute instead
+  self.setDaemon(True)
+/usr/local/lib/python3.10/dist-packages/ncclient/transport/session.py:47: DeprecationWarning: setName() is deprecated, set the name attribute instead
+  self.setName('session')
+/usr/local/lib/python3.10/dist-packages/jnpr/junos/device.py:724: RuntimeWarning: 
+CLI command is for debug use only!
+Instead of:
+cli('show chassis hardware detail')
+Use:
+rpc.get_chassis_inventory(detail=True)
+
+  warnings.warn(warning_string, RuntimeWarning)
+/usr/local/lib/python3.10/dist-packages/ncclient/operations/rpc.py:361: DeprecationWarning: isSet() is deprecated, use is_set() instead
+  if self._event.isSet():
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/conf_get_table.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_protocols.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_hardware.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_system.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_services.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:416: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/conf_get_table.yml' mode='r' encoding='UTF-8'>
+  edit_file_yml = yaml.load(open(edit_path_out,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/local/lib/python3.10/dist-packages/ncclient/transport/session.py:44: DeprecationWarning: setDaemon() is deprecated, set the daemon attribute instead
+  self.setDaemon(True)
+/usr/local/lib/python3.10/dist-packages/ncclient/transport/session.py:47: DeprecationWarning: setName() is deprecated, set the name attribute instead
+  self.setName('session')
+/usr/local/lib/python3.10/dist-packages/jnpr/junos/device.py:724: RuntimeWarning: 
+CLI command is for debug use only!
+Instead of:
+cli('show chassis fpc')
+Use:
+rpc.get_fpc_information()
+
+  warnings.warn(warning_string, RuntimeWarning)
+/usr/local/lib/python3.10/dist-packages/ncclient/operations/rpc.py:361: DeprecationWarning: isSet() is deprecated, use is_set() instead
+  if self._event.isSet():
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/conf_get_table.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_protocols.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_hardware.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_system.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_services.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:416: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/conf_get_table.yml' mode='r' encoding='UTF-8'>
+  edit_file_yml = yaml.load(open(edit_path_out,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/local/lib/python3.10/dist-packages/ncclient/transport/session.py:44: DeprecationWarning: setDaemon() is deprecated, set the daemon attribute instead
+  self.setDaemon(True)
+/usr/local/lib/python3.10/dist-packages/ncclient/transport/session.py:47: DeprecationWarning: setName() is deprecated, set the name attribute instead
+  self.setName('session')
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/conf_get_table.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_protocols.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_hardware.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_system.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_services.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:416: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/conf_get_table.yml' mode='r' encoding='UTF-8'>
+  edit_file_yml = yaml.load(open(edit_path_out,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/conf_get_table.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_protocols.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_hardware.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_system.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_services.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:416: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/conf_get_table.yml' mode='r' encoding='UTF-8'>
+  edit_file_yml = yaml.load(open(edit_path_out,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/local/lib/python3.10/dist-packages/jnpr/junos/device.py:724: RuntimeWarning: 
+CLI command is for debug use only!
+Instead of:
+cli('show isis adjacency detail')
+Use:
+rpc.get_isis_adjacency_information(detail=True)
+
+  warnings.warn(warning_string, RuntimeWarning)
+/usr/local/lib/python3.10/dist-packages/ncclient/operations/rpc.py:361: DeprecationWarning: isSet() is deprecated, use is_set() instead
+  if self._event.isSet():
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/conf_get_table.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_protocols.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_hardware.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_system.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_services.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:416: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/conf_get_table.yml' mode='r' encoding='UTF-8'>
+  edit_file_yml = yaml.load(open(edit_path_out,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/local/lib/python3.10/dist-packages/ncclient/transport/session.py:44: DeprecationWarning: setDaemon() is deprecated, set the daemon attribute instead
+  self.setDaemon(True)
+/usr/local/lib/python3.10/dist-packages/ncclient/transport/session.py:47: DeprecationWarning: setName() is deprecated, set the name attribute instead
+  self.setName('session')
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/conf_get_table.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_protocols.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_hardware.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_system.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/op_get_services.yml' mode='r' encoding='UTF-8'>
+  file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/juniper/svtech-streamlit-tableview/web-app/pages/1_📃_Search_Table_View.py:416: ResourceWarning: unclosed file <_io.TextIOWrapper name='/opt/SVTECH-Junos-Automation/Junos_tableview/conf_get_table.yml' mode='r' encoding='UTF-8'>
+  edit_file_yml = yaml.load(open(edit_path_out,"r"), Loader=yaml.FullLoader)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/local/lib/python3.10/dist-packages/jnpr/junos/device.py:724: RuntimeWarning: 
+CLI command is for debug use only!
+Instead of:
+cli('show route protocol ldp detail ')
+Use:
+rpc.get_route_information(detail=True, protocol='ldp')
+
+  warnings.warn(warning_string, RuntimeWarning)
+/usr/local/lib/python3.10/dist-packages/ncclient/operations/rpc.py:361: DeprecationWarning: isSet() is deprecated, use is_set() instead
+  if self._event.isSet():

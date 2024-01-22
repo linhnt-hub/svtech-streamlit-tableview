@@ -1,24 +1,32 @@
 import streamlit as st
-import pandas as pd
+import pandas as pd # Data Frame
 import numpy as np
-import yaml
-import json
+import json # Json format
 import os, sys
 from pathlib import Path
 import time
-from datetime import datetime, timezone, timedelta
+from datetime import datetime, timezone, timedelta # Datetime
 
 import re
 from PIL import Image
-from yamllint import linter
-from yamllint.config import YamlLintConfig
+from yamllint import linter # Lib for check yaml grammar
+from yamllint.config import YamlLintConfig # Lib for check yaml grammar
 
-from jnpr.junos import Device
+from jnpr.junos import Device # Lib for connect to Router
 from jnpr.junos.factory.factory_loader import FactoryLoader
-import yaml
+import yaml # Yaml format
 from lxml import etree # For XML XPath
 
 import mysql.connector
+###### Connect MySQL ###################
+# mydb = mysql.connector.connect(
+#   host="localhost",
+#   user="linhnt",
+#   password="Linhnt@123",
+#   database="tableviews",
+#   auth_plugin='mysql_native_password',
+# )
+# mycursor = mydb.cursor()
 
 # Import /opt/SVTECH-Junos-Automation/module_utils/PYEZ_BASE_FUNC.py
 sys.path.insert(0, '/opt/SVTECH-Junos-Automation/module_utils')
@@ -34,16 +42,6 @@ button[data-baseweb="tab"] > div[data-testid="stMarkdownContainer"] > p {
 </style>
 """
 st.write(font_css, unsafe_allow_html=True)
-
-###### Connect MySQL ###################
-# mydb = mysql.connector.connect(
-#   host="localhost",
-#   user="linhnt",
-#   password="Linhnt@123",
-#   database="tableviews",
-#   auth_plugin='mysql_native_password',
-# )
-# mycursor = mydb.cursor()
 
 ########### Read file #################
 #file_path = '/opt/SVTECH-Junos-Automation/Junos_tableview/'
