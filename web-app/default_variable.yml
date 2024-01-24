@@ -1,0 +1,11 @@
+config_git:
+  repo_path: /opt/DevOps
+  remote: origin
+  branch_name: huong_test
+  base_branch: main
+  owner: huongpt11
+  repo: DevOps
+  token_git: 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
+path_junos_tableview:
+  path_table_view: /opt/SVTECH-Junos-Automation/Junos_tableview
+  path_module_utils: /opt/SVTECH-Junos-Automation/module_utils
