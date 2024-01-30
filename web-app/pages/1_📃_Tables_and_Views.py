@@ -1,3 +1,4 @@
+
 import streamlit as st
 import pandas as pd # Data Frame
 import numpy as np
@@ -5,7 +6,7 @@ import json # Json format
 import os, sys, logging
 from streamlit_utilities import * #Lib for stdout,stderr, gitcommit, gitpr
 from pathlib import Path 
-import time
+import time # Time
 from datetime import datetime, timezone, timedelta # Datetime
 
 import re
@@ -76,31 +77,32 @@ button[data-baseweb="tab"] > div[data-testid="stMarkdownContainer"] > p {
 </style>
 """
 st.write(font_css, unsafe_allow_html=True)
-############## Import /opt/SVTECH-Junos-Automation/module_utils/PYEZ_BASE_FUNC.py ######################
-# Load config path from file
-#config = yaml.load(open('app_config.yml',"r"), Loader=yaml.FullLoader)
-#st.write(config.get('path_module_utils'))
+################################################################
+                            
+                                                                        
+                                          
 
 sys.path.insert(0, config.get('path_junos_tableview', {}).get('path_module_utils'))
 from PYEZ_BASE_FUNC import PYEZ_TABLEVIEW_TO_DATAFRAME
 from PYEZ_BASE_FUNC import GET_PYEZ_TABLEVIEW_RAW
 from BASE_FUNC import LOGGER_INIT
+
 ## EXPLAIN: setting shell_output = False will create a default log Streamhandler, which by default send all   all Python log to stderr
 ## then we send all console stdout to TerminalOutput tab
 ## all stderr data (which include formatted log) to the LogData tab
-#LOGGER_INIT(log_level=logging.NOTSET, print_log_init = False, shell_output= False) 
+#LOGGER_INIT(log_level=logging.DEBUG, print_log_init = False, shell_output= False) 
 
 ########################### Read file ########3#################
-#file_path = '/opt/SVTECH-Junos-Automation/Junos_tableview/'
-#file_type = 'yml'
-#list_file_result = get_list_file(file_path, file_type) # List file in directory
+                                                            
+                  
+                                                                                
 list_file_result = ['conf_get_table.yml', 'op_get_protocols.yml', 'op_get_hardware.yml', 'op_get_system.yml', 'op_get_services.yml']
 list_table_result=[] # Save list tables
 list_view_result=[] # Save list views
 dict_table_result={} # Save dict tables
 dict_view_result={}  # Save dict views
 dict_path={}  # Save dict path
-# val= [] # Variable insert db
+                              
 
 ########################### Browser file #######################
 try:
@@ -114,17 +116,16 @@ try:
         list_table_result.append(list(res_table.keys())[i]) # Save name table to list
         dict_table_result.update(res_table)                 # Save dict_table to dict
         dict_path [list(res_table.keys())[i]]=path
-        ### Record to prepare write to Database
-        # temp = (str(list(res_table.keys())[i]), str(res_table.get(list(res_table.keys())[i]).get("view")), str(path))
-        # val.append(list(temp)) 
-            
+                                               
+                                                                                                                       
+                                
     if res_view:
       for i in range(len(list(res_view.keys()))):
         list_view_result.append(list(res_view.keys())[i])
-        dict_view_result.update(res_view)
+        dict_view_result.update(res_view)    # Save dict_view to dict
 except Exception as e:
-  print("An exception occurred, check file yaml %s" %e)
-######################## PAGE ################################
+  print("[115] [Browser File] An exception occurred, check file yaml %s" %e)
+######################## Create session_state ################################
 if 'test_table' not in st.session_state:
   st.session_state.test_table = True
   st.session_state.commit = True
@@ -132,6 +133,7 @@ if 'test_table' not in st.session_state:
   st.session_state.commit_edit = True
   st.session_state.commit_del_edit = True
 
+######################## Parent TAB ##########################
 tab5, tab6, tab7 = st.tabs(["🔢 TABLES / VIEWS", "📩 TERMINAL LOG", "📞LOG DATA"])
 with st_stdout("code",tab6), st_stderr("code",tab7):
   with tab5:
@@ -141,8 +143,10 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
         #st.header(':green[What table are your lookup ?]')
         st.subheader('Look Table/View Content ')
         options = st.multiselect(':orange[Type or select for searching]',list_table_result, placeholder = 'Select for view')
-        #st.write('You selected:', options)
-        dict_export_file={}
+        #print('[TAB1] You selected:%s' %options)
+        for opt in options:
+          print('[TAB1] You selected:[%s] with path [%s]' %(opt, dict_path.get(opt)))
+        dict_export_file={}  # Variable for export button
         if options:
           for option in options:
               dict_export_file[option]= dict_table_result.get(option)
@@ -166,6 +170,7 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
           with col3:
             st.write("*Use beside button for exporting your selection ...*")
           with col4:
+            # Export button
             st.download_button('Export', "---"+"\n"+ yaml.dump(dict_export_file, indent = 4, encoding= None))
     ###################### TAB2 ################################
     with tab2:
@@ -181,6 +186,7 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
           "Retrieve :green[Configuration Data]."],
           index= None,
         )
+        print('[TAB2] Option selected [%s]'%op)
       ############## TAB2 Table ####################################################
       with st.container(border = True):
         col1, col2 = st.columns([2,30])
@@ -217,10 +223,15 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
           )
         if op:  # Check state of selecting
           if (add_table.find(':') != -1) and add_table.split(':')[0].endswith("Table") and (add_table.find("view") != -1):
+            print("[TAB2] Table must end with Table, must have view:, must have :, [PASS]")
             if list_table_result.count(add_table.split(':')[0]) == 0: # Check duplicate table Name
+              print("[TAB2] Don't duplicate table name [PASS]")
               if (add_view.find(':') != -1) and add_view.split(':')[0].endswith("iew"):
+                print("[TAB2] View must end with View/view, must have :[PASS]")
                 if list_view_result.count(add_view.split(':')[0]) == 0: # Check duplicate view Name
-                  if add_view.split(':')[0] == add_table.split(':')[-1].strip():  # Need strip for remove space
+                  print("[TAB2] Don't duplicate view name [PASS]")
+                  if add_view.split(':')[0] == add_table.split(':')[-1].strip():  # Check table-view match with view, Need strip for remove space
+                    print("[TAB2] Match Table/view and View [PASS]")
                     conf_ymllint = YamlLintConfig('extends: default') ### Modify file /home/juniper/.local/lib/python3.10/site-packages/yamllint/conf/relaxed.yaml
                     error_table = linter.run(add_table , conf_ymllint)
                     error_view = linter.run(add_view , conf_ymllint)
@@ -239,6 +250,7 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
                         st.session_state.test_table = True
                         st.session_state.commit = True
                     else:
+                      print('[TAB2] Check table/view syntax successfully')
                       st.info("""
                       :green[Check table/view syntax successfully]\n
                       :green[Use below for testing new table/view]
@@ -246,6 +258,7 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
                       st.session_state.test_table = False
                       st.session_state.commit = True
                   else:
+                    print('[TAB2] Dont match Table.view with View')
                     st.warning("""
                       :red[- Don't match ]
                       :orange[Table.view ]
@@ -257,6 +270,7 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
                     st.session_state.test_table = True
                     st.session_state.commit = True
                 else:
+                  print('[TAB2] Duplicate View Name')
                   st.warning("""
                     :red[- Duplicate ]
                     :orange[View]
@@ -266,6 +280,7 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
                   st.session_state.test_table = True
                   st.session_state.commit = True
               else:
+                print('[TAB2] Add/Check view content ')
                 st.error("""
                   :red[- Add/Check ] 
                   :orange[View] 
@@ -275,6 +290,7 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
                 st.session_state.test_table = True
                 st.session_state.commit = True
             else:
+              print('[TAB2] Duplicate Table Name')
               st.warning("""
                 :red[- Duplicate ]
                 :orange[Table]
@@ -284,6 +300,7 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
               st.session_state.test_table = True
               st.session_state.commit = True
           else:
+              print('[TAB2] Add/Check table content ')
               st.error("""
                 :red[- Add/Check ] 
                 :orange[Table] 
@@ -295,6 +312,7 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
               st.session_state.test_table = True
               st.session_state.commit = True
         else:
+          print('[TAB2] Select Option/Add table/Add view ')
           st.error(
             '''
             :red[Check one of below before create, please :]\n
@@ -306,7 +324,7 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
           st.session_state.commit = True
       #with st.expander(":blue[See when you want to dicovery RPC with your router]"):
       st.subheader('2. Try your new table/view with your router')
-      
+      print('[TAB2] Test table/view with router')
       #############################TAB2 Form test table/view #####################################
       with st.form("form1"):
         user= st.text_input(':orange[Your username:] ', placeholder = 'Typing user')
@@ -318,7 +336,7 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
             time.sleep(1)
             try:
               with Device(host=router, user= user, password= passwd) as dev:
-                #print('Are we connected?', dev.connected)
+                print('[TAB2] Are we connected?', dev.connected)
                 try:
                     myYAML="".join([add_table,"\n",add_view])
                     #print(myYAML) 
@@ -327,28 +345,32 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
                     exec('table_object = %s(dev)'%add_table.split(':')[0]) 
                     table_object.get()
                     dataframe= PYEZ_TABLEVIEW_TO_DATAFRAME(dev= dev, tableview_obj= table_object)
-                    st.write(dataframe)
+                    st.dataframe(dataframe)
                     #print(dataframe)
                     #print(pd.DataFrame(dataframe))
+                                                
                     st.success('''
                     Get successfully\n
                     Use button below for creating and commit
                     ''')
+                    print('[TAB2] Get data successfully. Use button below for creating and commit')
                     dev.close()
                     st.session_state.commit = False
-                except:
+                except Exception as e:
                     st.error(
                     """
                     - Can't get data by table/view. Review table/view
                     """)
+                    print("[342] [TAB2] Check exception %s"%e)
                     st.session_state.commit = True
-            except:
+            except Exception as e:
               st.error(
                 """
                 - Check Your Username/Password\n
                 - Check connection to Router
                 """
                 )
+              print('[351] [TAB2] Check exception %s'%e)
               st.session_state.commit = True
       
       ##################################### TAB2 Create and commit #####################################
@@ -359,7 +381,8 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
         if submitted:
           match op:
             case "*Option 1*":
-              path_out = config.get('path_table_view') + "/op_get_protocols.yml"
+              path_out = config.get('path_junos_tableview', {}).get('path_table_view') + "/op_get_protocols.yml"
+              print('[TAB2] Save table/view to %s'%path_out)
               with open(path_out, 'a') as file_out :
                 file_out.write("\n")
                 file_out.write("#")
@@ -373,7 +396,8 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
                 #st.code(add_table, language='yaml')
                 #st.code(add_view, language='yaml')
             case "*Option 2*":
-              path_out = config.get('path_table_view') + "/op_get_hardware.yml"
+              path_out = config.get('path_junos_tableview', {}).get('path_table_view') + "/op_get_hardware.yml"
+              print('[TAB2] Save table/view to %s'%path_out)
               with open(path_out, 'a') as file_out :
                 file_out.write("\n")
                 file_out.write("#")
@@ -387,7 +411,8 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
                 #st.code(add_table, language='yaml')
                 #st.code(add_view, language='yaml')
             case "*Option 3*":
-              path_out = config.get('path_table_view') + "/op_get_system.yml"
+              path_out = config.get('path_junos_tableview', {}).get('path_table_view') + "/op_get_system.yml"
+              print('[TAB2] Save table/view to %s'%path_out)
               with open(path_out, 'a') as file_out :
                 file_out.write("\n")
                 file_out.write("#")
@@ -401,7 +426,8 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
                 #st.code(add_table, language='yaml')
                 #st.code(add_view, language='yaml')
             case "*Option 4*":
-              path_out = config.get('path_table_view') + "/op_get_services.yml"
+              path_out = config.get('path_junos_tableview', {}).get('path_table_view') + "/op_get_services.yml"
+              print('[TAB2] Save table/view to %s'%path_out)
               with open(path_out, 'a') as file_out :
                 file_out.write("\n")
                 file_out.write("#")
@@ -415,7 +441,8 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
                 #st.code(add_table, language='yaml')
                 #st.code(add_view, language='yaml')
             case "*Option 5*":
-                path_out = config.get('path_table_view') + "/conf_get_table.yml"
+                path_out = config.get('path_junos_tableview', {}).get('path_table_view') + "/conf_get_table.yml"
+                print('[TAB2] Save table/view to %s'%path_out)
                 with open(path_out, 'a') as file_out :
                   file_out.write("\n")
                   file_out.write("#")
@@ -428,7 +455,21 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
                   file_out.close()     
                   #st.code(add_table, language='yaml')
                   #st.code(add_view, language='yaml')
+          print(f"[TAB2] save+commit, path is {path_out}")                             
+          gitCommit(
+            # repo_path=repo_path,
+            file_commit = path_out,
+            commit_message = comment_commit_tab2,
+            # remote=remote,
+            # branch_name= branch_name
+          )
+          # print(34, file_commit)
+          gitpr(
+            title='fix: Create new file Junos_tableview',
+            body='This PR to add new file Junos_tableview'
+          )
           st.success('Create and commit successfully')
+          print('[TAB2] Create and commit successfully')
     ############################################# TAB3 ###########################################
     with tab3:
       dict_table_tab3={}
@@ -437,7 +478,7 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
       edit_view=""
       st.subheader('1. Select Table/View')
       option = st.selectbox(':orange[Type or select from list]',tuple(list_table_result), placeholder = 'Select table/view', index = None)
-      #st.write('You selected:', options)
+      print('[TAB3] You selected: [%s] with path [%s]'%(option, dict_path.get(option)))
       if option:
         st.session_state.test_table_edit = True
         st.session_state.commit_edit = True
@@ -470,8 +511,8 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
           if edit_res_view:
             for i in range(len(list(edit_res_view.keys()))):
               dict_view_tab3.update(edit_res_view)  # Save view to dict
-        except:
-          st.write("An exception occurred")
+        except Exception as e:
+          st.write("[TAB3] Read file yaml fail with log error [%s]"%e)
         
         with st.container(border = True) as container:
           output=[]
@@ -566,6 +607,7 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
                   #table_object.get()
                   #dataframe= PYEZ_TABLEVIEW_TO_DATAFRAME(dev= dev, tableview_obj= table_object)
                   #st.write(dataframe)
+                  print("[TAB3] Create file test_temp")
                   with open('file_test_temp.yml','w') as file:
                     file.write(edit_table)
                     file.write('\n')
@@ -573,9 +615,9 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
                     file.close()
                   raw= GET_PYEZ_TABLEVIEW_RAW(dev= dev, data_type = edit_table.split(':')[0][:-5] ,tableview_file= 'file_test_temp.yml', kwargs= args_dict)
                   raw.get()
-                  print("This is TABLEVIEW_RAW [%s]"%raw)
+                  print("[TAB3] This is TABLEVIEW_RAW [%s]"%raw)
                   dataframe= PYEZ_TABLEVIEW_TO_DATAFRAME(dev= dev, tableview_obj= raw)
-                  st.write(dataframe)
+                  st.dataframe(dataframe)
                   #st.write(raw.items())
                   os.remove('file_test_temp.yml')
                   st.toast(':blue[Get successfully]')
@@ -624,7 +666,22 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
               file_out.write(edit_view)
               file_out.write("\n")
               file_out.close()
+          print(f"[669][TAB3] Path is {edit_path_out}")
+                                             
+          gitCommit(
+            # repo_path=repo_path,
+            file_commit = edit_path_out,
+            commit_message = comment_commit_tab3,
+            # remote=remote,
+            # branch_name= branch_name
+            )
+          # print(34, file_commit)
+          gitpr(
+            title='fix: Modify file Junos_tableview',
+            body='This PR to modify file Junos_tableview'
+            )
           st.success('Save change and commit successfully')
+          print('[TAB3] Save change and commit successfully')
         st.session_state.commit_edit = True
       ############################## TAB3 Delete and commit #################################################
       st.subheader('4. Delete and commit')
@@ -642,7 +699,22 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
               file_out.write("\n")
               file_out.write(yaml.dump(dict_view_tab3, indent = 4))
               file_out.close()
+          print(f"[702][TAB3] Path is {edit_path_out}")
+                                             
+          gitCommit(
+            # repo_path=repo_path,
+            file_commit = edit_path_out,
+            commit_message = comment_commit_tab3,
+            # remote=remote,
+            # branch_name= branch_name
+            )
+          # print(34, file_commit)
+          gitpr(
+            title='fix: Delete file Junos_tableview',
+            body='This PR to delete file Junos_tableview'
+            )
           st.success('Delete and commit successfully')
+          print('[TAB3] Delete and commit successfully')
         st.session_state.commit_del_edit = True
     ###################### TAB4 ##########################################################################
     with tab4:
@@ -680,7 +752,7 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
                     is_valid, error_message = check_xpath_syntax(xpath)
                     if is_valid:
                       st.info("Result:")
-                      #st.write(a1.xpath(xpath))
+                      print('[TAB4] Element of RPC XPath %s'%a1.xpath(xpath))
                       #list_xml= []
                       for e in a1.xpath(xpath):
                         xml_minidom = xml.dom.minidom.parseString(etree.tostring(e)) # Func display xml like pretty
@@ -693,12 +765,14 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
                       st.error(f"Syntax XPath is invalid. Error message: [{error_message}]")
                     #st.code(dev.cli(command), language='yaml', line_numbers= True)
                     dev.close()
-                  except:
+                  except Exception as e:
+                      print('[769][TAB4] Error exception is [%s]'%e)
                       st.error(
                       """
                       No command entered or xml rpc equivalent of this command is not available.
                       """)
-              except:
+              except Exception as e:
+                print('[775][TAB4] Error exception is [%s]'%e)
                 st.error(
                   """
                   - Check Your Username/Password\n
@@ -713,15 +787,20 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
           if example_xml:
             if example_xpath:
               is_valid, error_message = check_xpath_syntax(example_xpath)
-              # Display the result
+              # Display the result_xml
               #st.write(f"XPath Expression: {example_xpath}")
               if is_valid:
                   st.write(":blue[Result is :]")
                   try:
-                    result = evaluate_xpath(example_xml, example_xpath)
-                    st.write(result)
-                  except:
-                    st.error("XML syntax error")
+                    result_xml = evaluate_xpath(example_xml, example_xpath)
+                    print('[TAB4] Element of XPath Tester %s'%result_xml)
+                    for e in result_xml:
+                      xml_minidom1 = xml.dom.minidom.parseString(etree.tostring(e))
+                      xml_pretty1 = xml_minidom1.toprettyxml()
+                      st.code(xml_pretty1, language= 'xml')
+                    #st.write(xml_pretty1)
+                  except Exception as e:
+                    st.error("XML syntax error %s"%e)
               else:
                   st.error(f"Syntax is invalid. Error message: {error_message}")
             else:
@@ -738,7 +817,7 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
                 )             
   with tab6:
     ##EXPLAIN: you dont have to do anything here becase we already specify this as output for stdout above
-    st.subheader(":blue[Python PRINTING OPERATION (STDOUT) will be displayed on this tab]")
+    st.write(":blue[Python Printing Operation (stdout) will be displayed on this tab. ]")
   with tab7:
     ##EXPLAIN: you dont have to do anything here becase we already specify this as output for stderr above
-    st.subheader(":blue[Python LOGGING DATA from logger object will be displayed on this tab]")
+    st.write(":blue[Python Logging Data from logger object will be displayed on this tab. ]")
