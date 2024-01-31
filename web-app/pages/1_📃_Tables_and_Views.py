@@ -14,6 +14,43 @@ from PIL import Image
 from yamllint import linter # Lib for check yaml grammar
 from yamllint.config import YamlLintConfig # Lib for check yaml grammar
 
+conf_ymllint= YamlLintConfig(
+'rules:\n'
+'    indentation:\n'
+'        spaces: 4\n'
+'        indent-sequences: no\n'
+'        check-multi-line-strings: false\n'
+'    key-duplicates: enable\n'
+'    line-length:\n'
+'        max: 200\n'
+'        level: warning\n'
+'        allow-non-breakable-inline-mappings: false\n'
+'    empty-lines:\n'
+'        level: warning\n'
+'    empty-values:\n'
+'        level: warning\n'
+'    hyphens:\n'
+'        level: warning\n'
+'    colons:\n'
+'        level: warning\n'
+'    braces:\n'
+'        forbid: true\n'
+'        forbid: non-empty\n'
+'        level: warning\n'
+'        max-spaces-inside: 1\n'
+'    brackets:\n'
+'        forbid: true\n'
+'        forbid: non-empty\n'
+'        level: warning\n'
+'        max-spaces-inside: 1\n'
+'    commas:\n'
+'        level: warning\n'
+'    comments: disable\n'
+'    comments-indentation: disable\n'
+'    document-start: disable\n'
+'    document-end: disable\n'
+)
+
 from jnpr.junos import Device # Lib for connect to Router
 from jnpr.junos.factory.factory_loader import FactoryLoader
 import yaml # Yaml format
@@ -38,6 +75,16 @@ def check_xpath_syntax(xpath_expression):
         return True, None
     except etree.XPathSyntaxError as e:
         return False, str(e)
+# def display_xml_tree(xml_string):
+#     try:
+#         # Parse the XML string using etree.fromstring()
+#         root = etree.fromstring(xml_string)
+#         # Display the XML tree using etree.tostring() with pretty_print
+#         tree_str = etree.tostring(root, pretty_print=True, encoding="unicode")
+#         print(tree_str)
+#     except etree.XMLSyntaxError as e:
+#         print(f"XMLSyntaxError: {e}")
+
 def get_xml_data(device_host, username, password, command):
     try:
         # Connect to the Junos device
@@ -80,7 +127,7 @@ from BASE_FUNC import LOGGER_INIT
 ## EXPLAIN: setting shell_output = False will create a default log Streamhandler, which by default send all   all Python log to stderr
 ## then we send all console stdout to TerminalOutput tab
 ## all stderr data (which include formatted log) to the LogData tab
-LOGGER_INIT(log_level=logging.DEBUG, print_log_init = False, shell_output= False) 
+#LOGGER_INIT(log_level=logging.DEBUG, print_log_init = False, shell_output= False) 
 
 ########################### Read file ########3#################
                                                             
@@ -222,7 +269,7 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
                   print("[TAB2] Don't duplicate view name [PASS]")
                   if add_view.split(':')[0] == add_table.split(':')[-1].strip():  # Check table-view match with view, Need strip for remove space
                     print("[TAB2] Match Table/view and View [PASS]")
-                    conf_ymllint = YamlLintConfig('extends: default') ### Modify file /home/juniper/.local/lib/python3.10/site-packages/yamllint/conf/relaxed.yaml
+                    #conf_ymllint = YamlLintConfig('extends: default') ### Modify file /home/juniper/.local/lib/python3.10/site-packages/yamllint/conf/relaxed.yaml
                     error_table = linter.run(add_table , conf_ymllint)
                     error_view = linter.run(add_view , conf_ymllint)
                     list_err_table = list(error_table)
@@ -511,10 +558,10 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
             st.write("*Use beside button for check syntax/delete your table/view ...*")
           with col4:
             if st.button('Check syntax', type= 'primary'):
-              conf_ymllint_tab3 = YamlLintConfig('extends: default')
-              error_table_tab3 = linter.run(edit_table , conf_ymllint_tab3)
-              error_view_tab3 = linter.run(edit_view , conf_ymllint_tab3)
-              error_args_tab3 = linter.run(edit_table_args , conf_ymllint_tab3)
+              #conf_ymllint_tab3 = YamlLintConfig('extends: default')
+              error_table_tab3 = linter.run(edit_table , conf_ymllint)
+              error_view_tab3 = linter.run(edit_view , conf_ymllint)
+              error_args_tab3 = linter.run(edit_table_args , conf_ymllint)
               list_err_table_tab3 = list(error_table_tab3)
               list_err_view_tab3 = list(error_view_tab3)
               list_err_args_tab3 = list(error_args_tab3)
