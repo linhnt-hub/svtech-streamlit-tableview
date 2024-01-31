@@ -38,16 +38,6 @@ def check_xpath_syntax(xpath_expression):
         return True, None
     except etree.XPathSyntaxError as e:
         return False, str(e)
-# def display_xml_tree(xml_string):
-#     try:
-#         # Parse the XML string using etree.fromstring()
-#         root = etree.fromstring(xml_string)
-#         # Display the XML tree using etree.tostring() with pretty_print
-#         tree_str = etree.tostring(root, pretty_print=True, encoding="unicode")
-#         print(tree_str)
-#     except etree.XMLSyntaxError as e:
-#         print(f"XMLSyntaxError: {e}")
-
 def get_xml_data(device_host, username, password, command):
     try:
         # Connect to the Junos device
@@ -90,7 +80,7 @@ from BASE_FUNC import LOGGER_INIT
 ## EXPLAIN: setting shell_output = False will create a default log Streamhandler, which by default send all   all Python log to stderr
 ## then we send all console stdout to TerminalOutput tab
 ## all stderr data (which include formatted log) to the LogData tab
-#LOGGER_INIT(log_level=logging.DEBUG, print_log_init = False, shell_output= False) 
+LOGGER_INIT(log_level=logging.DEBUG, print_log_init = False, shell_output= False) 
 
 ########################### Read file ########3#################
                                                             
