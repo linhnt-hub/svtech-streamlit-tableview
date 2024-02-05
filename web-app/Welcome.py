@@ -10,7 +10,7 @@ st.set_page_config(
  )
 
 st.write("# Welcome 👋")
-#st.sidebar.success("Select one above.")
+#st.sidebar.success("Select one above...")
 st.markdown(
     """
     This page made by Linh Nguyen Tuan\n
