@@ -1,5 +1,6 @@
 
 import streamlit as st
+from streamlit_ace import st_ace
 import pandas as pd # Data Frame
 import numpy as np
 import json # Json format
@@ -226,38 +227,12 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
         print('[TAB2] Option selected [%s]'%op)
       ############## TAB2 Table ####################################################
       with st.container(border = True):
-        col1, col2 = st.columns([2,30])
-        with col1:
-          st.text_area(
-            "N1",
-            label_visibility = 'hidden',
-            height=370,
-            disabled = True,
-            placeholder= "  1 \n  2\n  3  \n  4  \n  5  \n  6  \n  7  \n  8  \n  9  \n 10\n 11\n 12\n 13\n 14\n 15",
-          )
-        with col2:
-          add_table = st.text_area(
-            ":orange[Add Table]  *YAML with Identation = 4*",
-            height=370,
-            placeholder= "* Compose your table structure*",
-          )
+        st.write(":orange[Add Table]  *YAML with Identation = 4*")
+        add_table= st_ace(language= 'yaml', theme= 'monokai', show_gutter=True, keybinding="vscode" , auto_update= True, placeholder= '* Compose your table structure*', height= 300)
       ############## TAB2 View ####################################################
       with st.container(border = True):
-        col3, col4 = st.columns([2,30])
-        with col3:
-          st.text_area(
-            "N2",
-            label_visibility = 'hidden',
-            height=370,
-            disabled = True,
-            placeholder= "  1 \n  2\n  3  \n  4  \n  5  \n  6  \n  7  \n  8  \n  9  \n 10\n 11\n 12\n 13\n 14\n 15",
-          )
-        with col4:
-          add_view = st.text_area(
-            ":orange[Add View]  *YAML with Identation = 4*",
-            height=370,
-            placeholder= "* Compose your view structure*",
-          )
+        st.write(":orange[Add View]  *YAML with Identation = 4*")
+        add_view= st_ace(language= 'yaml', theme= 'monokai', show_gutter=True, keybinding="vscode" , auto_update= True, placeholder= '* Compose your view structure*', height= 300)
         if op:  # Check state of selecting
           if (add_table.find(':') != -1) and add_table.split(':')[0].endswith("Table") and (add_table.find("view") != -1):
             print("[TAB2] Table must end with Table, must have view:, must have :, [PASS]")
@@ -524,19 +499,27 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
         with st.container(border = True) as container:
           col1, col2 = st.columns(2)
           with col1:
-            container = st.container(border = True)
-            dict_temp1_tab3[option] = dict_table_result.get(option)
-            edit_table= container.text_area(':green[Table]', yaml.dump(dict_temp1_tab3, indent = 4), height= 250)
-            ####### Display for edit args in table
-            if list(dict_temp1_tab3.get(option).keys()).count('args') == 0:
-              edit_table_args= container.text_area(':green[Args]', height= 150)
-            else:
-              edit_table_args= container.text_area(':green[Args]', yaml.dump(dict_temp1_tab3.get(option).get('args'), indent = 4), height= 150)
+            with st.container(border = True) as container:
+              dict_temp1_tab3[option] = dict_table_result.get(option)
+              st.write(':green[**Table**]')
+              edit_table= st_ace(value= yaml.dump(dict_temp1_tab3, indent = 4), language= 'yaml', theme= 'monokai', show_gutter=True, keybinding="vscode" , auto_update= True, height= 200)
+              #edit_table= container.text_area(':green[Table]', yaml.dump(dict_temp1_tab3, indent = 4), height= 250)
+              ####### Display for edit args in table
+              if list(dict_temp1_tab3.get(option).keys()).count('args') == 0:
+                st.write(':green[**Args**]')
+                edit_table_args= st_ace(value= '', language= 'yaml', theme= 'monokai', show_gutter=True, keybinding="vscode" , auto_update= True, height= 100)
+                #edit_table_args= container.text_area(':green[Args]', height= 150)
+              else:
+                st.write(':green[**Args**]')
+                edit_table_args= st_ace(value= yaml.dump(dict_temp1_tab3.get(option).get('args'), indent = 4), language= 'yaml', theme= 'monokai', show_gutter=True, keybinding="vscode" , auto_update= True, height= 100)
+                #edit_table_args= container.text_area(':green[Args]', yaml.dump(dict_temp1_tab3.get(option).get('args'), indent = 4), height= 150)
           with col2:
             dict_temp2_tab3={}
-            container = st.container(border = True)
-            dict_temp2_tab3[dict_table_result.get(option).get("view")] = dict_view_result.get(dict_table_result.get(option).get("view"))
-            edit_view= container.text_area(':green[View]', yaml.dump(dict_temp2_tab3, indent = 4), height= 445)
+            with st.container(border = True) as container:
+              dict_temp2_tab3[dict_table_result.get(option).get("view")] = dict_view_result.get(dict_table_result.get(option).get("view"))
+              st.write(':green[**View**]')
+              edit_view= st_ace(value= yaml.dump(dict_temp2_tab3, indent = 4), language= 'yaml', theme= 'monokai', show_gutter=True, keybinding="vscode" , auto_update= True, height= 380)
+              #edit_view= container.text_area(':green[View]', yaml.dump(dict_temp2_tab3, indent = 4), height= 445)
         try:
           edit_path_out = dict_path.get(option)
           edit_file_yml = yaml.load(open(edit_path_out,"r"), Loader=yaml.FullLoader)
@@ -818,8 +801,12 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
                   )
       with st.expander(":blue[XPath Tester - Evaluator]"):
           st.subheader('Allows you to test your XPath expressions/queries against a XML.')
-          example_xml= st.text_area(':orange[Step 1: Copy-paste your XML here] ', height=300)
-          example_xpath= st.text_input(':orange[Step 2: XPath expression] ')
+          st.write(':orange[*Step 1: Copy-paste your XML here*] ')
+          example_xml= st_ace(language= 'xml', theme= 'monokai', show_gutter=True, keybinding="vscode" , auto_update= True, placeholder= '* Your XML*', height= 300)
+          st.write(':orange[*Step 2: XPath expression*] ')
+          #example_xpath= st_ace(language= 'xml', theme= 'monokai', show_gutter=True, keybinding="vscode" , auto_update= True, placeholder= '* Your XPath*', height= 300)
+          #example_xml= st.text_area(':orange[Step 1: Copy-paste your XML here] ', height=300)
+          example_xpath= st.text_input(':orange[Step 2: XPath expression] ', label_visibility="hidden")
           #st.code(example_xml, language = 'xml')
           if example_xml:
             if example_xpath:
