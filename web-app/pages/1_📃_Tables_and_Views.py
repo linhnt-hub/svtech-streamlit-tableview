@@ -228,11 +228,11 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
       ############## TAB2 Table ####################################################
       with st.container(border = True):
         st.write(":orange[Add Table]  *YAML with Identation = 4*")
-        add_table= st_ace(language= 'yaml', theme= 'monokai', show_gutter=True, keybinding="vscode" , auto_update= True, placeholder= '* Compose your table structure*', height= 400)
+        add_table= st_ace(language= 'yaml', theme= 'monokai', show_gutter=True, keybinding="vscode" , auto_update= True, placeholder= '* Compose your table structure*', height= 300)
       ############## TAB2 View ####################################################
       with st.container(border = True):
         st.write(":orange[Add View]  *YAML with Identation = 4*")
-        add_view= st_ace(language= 'yaml', theme= 'monokai', show_gutter=True, keybinding="vscode" , auto_update= True, placeholder= '* Compose your view structure*', height= 400)
+        add_view= st_ace(language= 'yaml', theme= 'monokai', show_gutter=True, keybinding="vscode" , auto_update= True, placeholder= '* Compose your view structure*', height= 300)
         if op:  # Check state of selecting
           if (add_table.find(':') != -1) and add_table.split(':')[0].endswith("Table") and (add_table.find("view") != -1):
             print("[TAB2] Table must end with Table, must have view:, must have :, [PASS]")
@@ -801,8 +801,12 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
                   )
       with st.expander(":blue[XPath Tester - Evaluator]"):
           st.subheader('Allows you to test your XPath expressions/queries against a XML.')
-          example_xml= st.text_area(':orange[Step 1: Copy-paste your XML here] ', height=300)
-          example_xpath= st.text_input(':orange[Step 2: XPath expression] ')
+          st.write(':orange[*Step 1: Copy-paste your XML here*] ')
+          example_xml= st_ace(language= 'xml', theme= 'monokai', show_gutter=True, keybinding="vscode" , auto_update= True, placeholder= '* Your XML*', height= 300)
+          st.write(':orange[*Step 2: XPath expression*] ')
+          #example_xpath= st_ace(language= 'xml', theme= 'monokai', show_gutter=True, keybinding="vscode" , auto_update= True, placeholder= '* Your XPath*', height= 300)
+          #example_xml= st.text_area(':orange[Step 1: Copy-paste your XML here] ', height=300)
+          example_xpath= st.text_input(':orange[Step 2: XPath expression] ', label_visibility="hidden")
           #st.code(example_xml, language = 'xml')
           if example_xml:
             if example_xpath:
