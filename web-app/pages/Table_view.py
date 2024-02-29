@@ -4,7 +4,7 @@ import pandas as pd # Data Frame
 import numpy as np
 import json # Json format
 import os, sys, logging
-from streamlit_utilities import * #Lib for stdout,stderr, gitcommit, gitpr
+from streamlit_pyez_utilities import * #Lib for stdout,stderr, gitcommit, gitpr
 from pathlib import Path 
 import time # Time
 from datetime import datetime, timezone, timedelta # Datetime
@@ -13,43 +13,6 @@ import re
 from PIL import Image
 from yamllint import linter # Lib for check yaml grammar
 from yamllint.config import YamlLintConfig # Lib for check yaml grammar
-
-conf_ymllint= YamlLintConfig(
-'rules:\n'
-'    indentation:\n'
-'        spaces: 4\n'
-'        indent-sequences: no\n'
-'        check-multi-line-strings: false\n'
-'    key-duplicates: enable\n'
-'    line-length:\n'
-'        max: 200\n'
-'        level: warning\n'
-'        allow-non-breakable-inline-mappings: false\n'
-'    empty-lines:\n'
-'        level: warning\n'
-'    empty-values:\n'
-'        level: warning\n'
-'    hyphens:\n'
-'        level: warning\n'
-'    colons:\n'
-'        level: warning\n'
-'    braces:\n'
-'        forbid: true\n'
-'        forbid: non-empty\n'
-'        level: warning\n'
-'        max-spaces-inside: 1\n'
-'    brackets:\n'
-'        forbid: true\n'
-'        forbid: non-empty\n'
-'        level: warning\n'
-'        max-spaces-inside: 1\n'
-'    commas:\n'
-'        level: warning\n'
-'    comments: disable\n'
-'    comments-indentation: disable\n'
-'    document-start: disable\n'
-'    document-end: disable\n'
-)
 
 from jnpr.junos import Device # Lib for connect to Router
 from jnpr.junos.factory.factory_loader import FactoryLoader
@@ -75,16 +38,6 @@ def check_xpath_syntax(xpath_expression):
         return True, None
     except etree.XPathSyntaxError as e:
         return False, str(e)
-# def display_xml_tree(xml_string):
-#     try:
-#         # Parse the XML string using etree.fromstring()
-#         root = etree.fromstring(xml_string)
-#         # Display the XML tree using etree.tostring() with pretty_print
-#         tree_str = etree.tostring(root, pretty_print=True, encoding="unicode")
-#         print(tree_str)
-#     except etree.XMLSyntaxError as e:
-#         print(f"XMLSyntaxError: {e}")
-
 def get_xml_data(device_host, username, password, command):
     try:
         # Connect to the Junos device
@@ -116,12 +69,11 @@ button[data-baseweb="tab"] > div[data-testid="stMarkdownContainer"] > p {
 st.write(font_css, unsafe_allow_html=True)
 ################################################################
 
-
-
-
 sys.path.insert(0, config.get('path_junos_tableview', {}).get('path_module_utils'))
 from PYEZ_BASE_FUNC import PYEZ_TABLEVIEW_TO_DATAFRAME
 from PYEZ_BASE_FUNC import GET_PYEZ_TABLEVIEW_RAW
+from PYEZ_BASE_FUNC import GET_PYEZ_TABLEVIEW
+from PYEZ_BASE_FUNC import GET_TABLEVIEW_CATALOGUE
 from BASE_FUNC import LOGGER_INIT
 
 ## EXPLAIN: setting shell_output = False will create a default log Streamhandler, which by default send all   all Python log to stderr
@@ -129,39 +81,56 @@ from BASE_FUNC import LOGGER_INIT
 ## all stderr data (which include formatted log) to the LogData tab
 #LOGGER_INIT(log_level=logging.DEBUG, print_log_init = False, shell_output= False) 
 
-########################### Read file ########3#################
-                                                            
-                  
-                                                                                
-list_file_result = ['conf_get_table.yml', 'op_get_protocols.yml', 'op_get_hardware.yml', 'op_get_system.yml', 'op_get_services.yml', 'op_get_links.yml']
+########################### Read file ########3#################                                                        
+#list_file_result = ['conf_get_table.yml', 'op_get_protocols.yml', 'op_get_hardware.yml', 'op_get_system.yml', 'op_get_services.yml', 'op_get_links.yml']
 list_table_result=[] # Save list tables
 list_view_result=[] # Save list views
 dict_table_result={} # Save dict tables
 dict_view_result={}  # Save dict views
-dict_path={}  # Save dict path
+#dict_path={}  # Save dict path
                               
 
 ########################### Browser file #######################
+# try:
+#   for j in range(len(list_file_result)):
+#     path = config.get('path_junos_tableview', {}).get('path_table_view') + "/" + list_file_result[j]
+#     file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
+#     res_table = {key: val for key, val in file_yml.items() if key.endswith("Table")}  # Get dict Table
+#     res_view = {key: val for key, val in file_yml.items() if key.endswith("iew")}     # Get dict View
+#     if res_table:
+#       for i in range(len(list(res_table.keys()))):
+#         list_table_result.append(list(res_table.keys())[i]) # Save name table to list
+#         dict_table_result.update(res_table)                 # Save dict_table to dict
+#         dict_path [list(res_table.keys())[i]]= path                            
+#     if res_view:
+#       for i in range(len(list(res_view.keys()))):
+#         list_view_result.append(list(res_view.keys())[i])
+#         dict_view_result.update(res_view)    # Save dict_view to dict
+# except Exception as e:
+#   print("[115] [Browser File] An exception occurred, check file yaml %s" %e)
+
 try:
-  for j in range(len(list_file_result)):
-    path = config.get('path_junos_tableview', {}).get('path_table_view') + "/" + list_file_result[j]
-    file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
-    res_table = {key: val for key, val in file_yml.items() if key.endswith("Table")}  # Get dict Table
-    res_view = {key: val for key, val in file_yml.items() if key.endswith("iew")}     # Get dict View
-    if res_table:
-      for i in range(len(list(res_table.keys()))):
-        list_table_result.append(list(res_table.keys())[i]) # Save name table to list
-        dict_table_result.update(res_table)                 # Save dict_table to dict
-        dict_path [list(res_table.keys())[i]]=path
-                                               
-                                                                                                                       
-                                
-    if res_view:
-      for i in range(len(list(res_view.keys()))):
-        list_view_result.append(list(res_view.keys())[i])
-        dict_view_result.update(res_view)    # Save dict_view to dict
+  tableview_cat= GET_TABLEVIEW_CATALOGUE(config.get('path_junos_tableview', {}).get('path_table_view'))
+  #res_table = {key: val for key, val in tableview_cat.items() if key.endswith("Table")}  # Get dict Table
+  dict_table_result = {key: val for key, val in tableview_cat.items() if key.endswith("Table")}  # Get dict Table
+  # for i in range(len(list(dict_table.keys()))):
+  #   dict_table_result[list(dict_table.keys()[i])] = dict_table.get('content')
+  #res_view = {key: val for key, val in tableview_cat.items() if key.endswith("iew")}     # Get dict View
+  dict_view_result = {key: val for key, val in tableview_cat.items() if key.endswith("iew")}  # Get dict View
+  list_table_result= list(dict_table_result.keys())
+  list_view_result= list(dict_view_result.keys())
+  # if res_table:
+  #   for i in range(len(list(res_table.keys()))):
+  #     list_table_result.append(list(res_table.keys())[i]) # Save name table to list
+  #     dict_table_result.update(res_table)                 # Save dict_table to dict
+  #     dict_path [list(res_table.keys())[i]]= path                            
+  # if res_view:
+  #   for i in range(len(list(res_view.keys()))):
+  #     list_view_result.append(list(res_view.keys())[i])
+  #     dict_view_result.update(res_view)    # Save dict_view to dict
 except Exception as e:
-  print("[115] [Browser File] An exception occurred, check file yaml %s" %e)
+  print("[Call GET_TABLEVIEW_CATALOGUE] An exception occurred, check error %s" %e)
+
 ######################## Create session_state ################################
 if 'test_table' not in st.session_state:
   st.session_state.test_table = True
@@ -177,38 +146,38 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
     tab1, tab2, tab3, tab4 = st.tabs(["1️⃣ VIEW","2️⃣CREATE", "3️⃣ EDIT / TEST", "4️⃣RPC CHECK / XPATH TESTER"])
     ################# TAB1 #############
     with tab1:
-        #st.header(':green[What table are your lookup ?]')
-        st.subheader('Look Table/View Content ')
-        options = st.multiselect(':orange[Type or select for searching]',list_table_result, placeholder = 'Select for view')
-        #print('[TAB1] You selected:%s' %options)
-        for opt in options:
-          print('[TAB1] You selected:[%s] with path [%s]' %(opt, dict_path.get(opt)))
-        dict_export_file={}  # Variable for export button
-        if options:
-          for option in options:
-              dict_export_file[option]= dict_table_result.get(option)
-              dict_export_file[dict_table_result.get(option).get("view")] = dict_view_result.get(dict_table_result.get(option).get("view"))
-              with st.container(border = True) as container:
-                col1, col2 = st.columns(2)
-                with col1:
-                    dict_temp1_tab1={}
-                    container = st.container(border = True)
-                    dict_temp1_tab1[option] = dict_table_result.get(option)
-                    #container.code("%s" % option, language= 'yaml')
-                    container.code(yaml.dump(dict_temp1_tab1, indent = 4), language = 'yaml', line_numbers= True) # Display dict by yaml format
-                with col2:
-                    dict_temp2_tab1={}
-                    container = st.container(border = True)
-                    dict_temp2_tab1[dict_table_result.get(option).get("view")] = dict_view_result.get(dict_table_result.get(option).get("view"))
-                    #container.code("%s" % dict_table_result.get(option).get("view"), language= 'yaml')
-                    container.code(yaml.dump(dict_temp2_tab1, indent = 4), language = 'yaml', line_numbers= True)
-        with st.container(border = True) as container:
-          col3, col4 = st.columns([9,1])
-          with col3:
-            st.write("*Use beside button for exporting your selection ...*")
-          with col4:
-            # Export button
-            st.download_button('Export', "---"+"\n"+ yaml.dump(dict_export_file, indent = 4, encoding= None))
+      st.subheader('Look Table/View Content ')
+      options = st.multiselect(':orange[Type or select for searching]',dict_table_result.keys(), placeholder = 'Select for view')
+      for opt in options:
+        print('[TAB1] You selected:[%s] with path [%s]' %(opt, dict_table_result.get(opt).get('dir')))
+      dict_export_file={}  # Variable for export button
+      if options:
+        for option in options:
+            dict_export_file[option]= dict_table_result.get(option).get('content')
+            dict_export_file[dict_table_result.get(option).get('view')] = dict_view_result.get(dict_table_result.get(option).get('view')).get('content')
+            with st.container(border = True) as container:
+              col1, col2 = st.columns(2)
+              with col1:
+                  dict_temp1_tab1={}
+                  container = st.container(border = True)
+                  dict_temp1_tab1[option] = dict_table_result.get(option).get('content')
+                  #container.code("%s" % option, language= 'yaml')
+                  container.code(yaml.dump(dict_temp1_tab1, indent = 4), language = 'yaml', line_numbers= True) # Display dict by yaml format
+              with col2:
+                  dict_temp2_tab1={}
+                  container = st.container(border = True)
+                  dict_temp2_tab1[dict_table_result.get(option).get('content').get('view')] = dict_view_result.get(dict_table_result.get(option).get('content').get('view')).get('content')
+                  #container.code("%s" % dict_table_result.get(option).get("view"), language= 'yaml')
+                  container.code(yaml.dump(dict_temp2_tab1, indent = 4), language = 'yaml', line_numbers= True)
+      with st.container(border = True) as container:
+        col3, col4 = st.columns([9,1])
+        with col3:
+          st.write("*Use beside button for exporting your selection ...*")
+        with col4:
+          # Export button
+          st.download_button('Export', "---"+"\n"+ yaml.dump(dict_export_file, indent = 4, encoding= None))
+      with st.expander(":blue[List Table]"):
+        st.json(json.dumps(list(dict_table_result.keys()), indent=4))
     ###################### TAB2 ################################
     with tab2:
       st.subheader('1. Create new Table/View ')
@@ -262,7 +231,8 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
                   print("[TAB2] Don't duplicate view name [PASS]")
                   if add_view.split(':')[0] == add_table.split(':')[-1].strip():  # Check table-view match with view, Need strip for remove space
                     print("[TAB2] Match Table/view and View [PASS]")
-                    #conf_ymllint = YamlLintConfig('extends: default') ### Modify file /home/juniper/.local/lib/python3.10/site-packages/yamllint/conf/relaxed.yaml
+                    conf_ymllint = YamlLintConfig('extends: default') ### Modify file /home/juniper/.local/lib/python3.10/site-packages/yamllint/conf/relaxed.yaml
+                    # Or /usr/local/lib/python3.10/dist-packages/yamllint/conf
                     error_table = linter.run(add_table , conf_ymllint)
                     error_view = linter.run(add_view , conf_ymllint)
                     list_err_table = list(error_table)
@@ -391,7 +361,7 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
                     """
                     - Can't get data by table/view. Review table/view
                     """)
-                    print("[342] [TAB2] Check exception %s"%e)
+                    print("[392] [TAB2] Check exception %s"%e)
                     st.session_state.commit = True
             except Exception as e:
               st.error(
@@ -520,9 +490,9 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
       edit_table=""
       edit_view=""
       st.subheader('1. Select Table/View')
-      option = st.selectbox(':orange[Type or select from list]',tuple(list_table_result), placeholder = 'Select table/view', index = None)
-      print('[TAB3] You selected: [%s] with path [%s]'%(option, dict_path.get(option)))
+      option = st.selectbox(':orange[Type or select from list]',list_table_result , placeholder = 'Select table/view', index = None)
       if option:
+        print('[TAB3] You selected: [%s] with path [%s]'%(option, dict_table_result.get(option).get('dir')))
         st.session_state.test_table_edit = True
         st.session_state.commit_edit = True
         dict_temp1_tab3={}
@@ -531,7 +501,7 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
           col1, col2 = st.columns(2)
           with col1:
             with st.container(border = True) as container:
-              dict_temp1_tab3[option] = dict_table_result.get(option)
+              dict_temp1_tab3[option] = dict_table_result.get(option).get('content')
               st.write(':green[**Table**]')
               edit_table= st_ace(value= yaml.dump(dict_temp1_tab3, indent = 4), 
               language= config.get('config_streamlit_ace', {}).get('language'), 
@@ -551,7 +521,7 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
               keybinding=config.get('config_streamlit_ace', {}).get('keybinding') , 
               auto_update= config.get('config_streamlit_ace', {}).get('auto_update'),  
                 height= 100)
-                #edit_table_args= container.text_area(':green[Args]', height= 150)
+              #edit_table_args= container.text_area(':green[Args]', height= 150)
               else:
                 st.write(':green[**Args**]')
                 edit_table_args= st_ace(value= yaml.dump(dict_temp1_tab3.get(option).get('args'), indent = 4), 
@@ -561,11 +531,11 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
               keybinding=config.get('config_streamlit_ace', {}).get('keybinding') , 
               auto_update= config.get('config_streamlit_ace', {}).get('auto_update'), 
                 height= 100)
-                #edit_table_args= container.text_area(':green[Args]', yaml.dump(dict_temp1_tab3.get(option).get('args'), indent = 4), height= 150)
+              #edit_table_args= container.text_area(':green[Args]', yaml.dump(dict_temp1_tab3.get(option).get('args'), indent = 4), height= 150)
           with col2:
             dict_temp2_tab3={}
             with st.container(border = True) as container:
-              dict_temp2_tab3[dict_table_result.get(option).get("view")] = dict_view_result.get(dict_table_result.get(option).get("view"))
+              dict_temp2_tab3[dict_table_result.get(option).get("view")] = dict_view_result.get(dict_table_result.get(option).get("view")).get('content')
               st.write(':green[**View**]')
               edit_view= st_ace(value= yaml.dump(dict_temp2_tab3, indent = 4), 
               language= config.get('config_streamlit_ace', {}).get('language'), 
@@ -576,19 +546,19 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
               height= 380)
               #edit_view= container.text_area(':green[View]', yaml.dump(dict_temp2_tab3, indent = 4), height= 445)
         try:
-          edit_path_out = dict_path.get(option)
+          edit_path_out = dict_table_result.get(option).get('dir')
           edit_file_yml = yaml.load(open(edit_path_out,"r"), Loader=yaml.FullLoader)
-          edit_res_table = {key: val for key, val in edit_file_yml.items() if key.endswith("Table")}  # Get dict Table
-          edit_res_view = {key: val for key, val in edit_file_yml.items() if key.endswith("iew")}     # Get dict View
-          if edit_res_table:
-            for i in range(len(list(edit_res_table.keys()))):
-              dict_table_tab3.update(edit_res_table) # Save dict_table to dict
-          if edit_res_view:
-            for i in range(len(list(edit_res_view.keys()))):
-              dict_view_tab3.update(edit_res_view)  # Save view to dict
+          dict_table_tab3 = {key: val for key, val in edit_file_yml.items() if key.endswith("Table")}  # Get dict Table
+          dict_view_tab3 = {key: val for key, val in edit_file_yml.items() if key.endswith("iew")}     # Get dict View
+          # if edit_res_table:
+          #   #for i in range(len(list(edit_res_table.keys()))):
+          #   dict_table_tab3.update(edit_res_table) # Save table to dict
+          # if edit_res_view:
+          #   #for i in range(len(list(edit_res_view.keys()))):
+          #   dict_view_tab3.update(edit_res_view)  # Save view to dict
         except Exception as e:
-          st.write("[TAB3] Read file yaml fail with log error [%s]"%e)
-        
+          st.error("[TAB3] Read file yaml fail with log error [%s]"%e)
+          print("[TAB3] Read file yaml fail with log error [%s]"%e)
         with st.container(border = True) as container:
           output=[]
           col3, col4, col5 = st.columns([10,1.5,1])
@@ -596,10 +566,10 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
             st.write("*Use beside button for check syntax/delete your table/view ...*")
           with col4:
             if st.button('Check syntax', type= 'primary'):
-              #conf_ymllint_tab3 = YamlLintConfig('extends: default')
-              error_table_tab3 = linter.run(edit_table , conf_ymllint)
-              error_view_tab3 = linter.run(edit_view , conf_ymllint)
-              error_args_tab3 = linter.run(edit_table_args , conf_ymllint)
+              conf_ymllint_tab3 = YamlLintConfig('extends: default')
+              error_table_tab3 = linter.run(edit_table , conf_ymllint_tab3)
+              error_view_tab3 = linter.run(edit_view , conf_ymllint_tab3)
+              error_args_tab3 = linter.run(edit_table_args , conf_ymllint_tab3)
               list_err_table_tab3 = list(error_table_tab3)
               list_err_view_tab3 = list(error_view_tab3)
               list_err_args_tab3 = list(error_args_tab3)
@@ -667,7 +637,7 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
           with st.spinner('Wait for it...'):
             time.sleep(1)
             args_dict = yaml.safe_load(edit_table_args)
-            print(args_dict)
+            #print(args_dict)
             try:
               with Device(host=router, user= user, password= passwd) as dev:
                 #print('Are we connected?', dev.connected)
@@ -681,21 +651,22 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
                   #exec('table_object = %s(dev)'%edit_table.split(':')[0]) 
                   #table_object.get()
                   #dataframe= PYEZ_TABLEVIEW_TO_DATAFRAME(dev= dev, tableview_obj= table_object)
-                  #st.write(dataframe)
-                  print("[TAB3] Create file test_temp")
-                  with open('file_test_temp.yml','w') as file:
-                    file.write(edit_table)
-                    file.write('\n')
-                    file.write(edit_view)
-                    file.close()
-                  print(edit_table.split(':')[0][:-5])
-                  raw= GET_PYEZ_TABLEVIEW_RAW(dev= dev, data_type = edit_table.split(':')[0][:-5] ,tableview_file= 'file_test_temp.yml', kwargs= args_dict)
-                  raw.get()
-                  print("[TAB3] This is TABLEVIEW_RAW [%s]"%raw)
-                  dataframe= PYEZ_TABLEVIEW_TO_DATAFRAME(dev= dev, tableview_obj= raw)
+                  #st.dataframe(dataframe)
+                  #print("[TAB3] Create file test_temp")
+                  # with open('file_test_temp.yml','w') as file:
+                  #   file.write(edit_table)
+                  #   file.write('\n')
+                  #   file.write(edit_view)
+                  #   file.close()
+                  #raw= GET_PYEZ_TABLEVIEW_RAW(dev= dev, data_type = edit_table.split(':')[0][:-5] ,tableview_file= 'file_test_temp.yml', kwargs= args_dict)
+                  print("[TAB3] Call GET_PYEZ_TABLEVIEW")
+                  tv_obj = GET_PYEZ_TABLEVIEW(dev= dev, data_type = edit_table.split(':')[0][:-5], kwargs= args_dict)
+                  tv_obj.get()
+                  print("[TAB3] Call PYEZ_TABLEVIEW_TO_DATAFRAME [%s]"%tv_obj)
+                  dataframe= PYEZ_TABLEVIEW_TO_DATAFRAME(dev= dev, tableview_obj= tv_obj)
                   st.dataframe(dataframe)
                   #st.write(raw.items())
-                  os.remove('file_test_temp.yml')
+                  #os.remove('file_test_temp.yml')
                   st.toast(':blue[Get successfully]')
                   st.success('''
                   Use button below for saving and commit
@@ -707,7 +678,7 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
                     """
                     - Can't get data by table/view. Review table/view
                     """)
-                    logging.error ( "[620] Can't get data by table/view. Review table/view [ {} ]".format(e))
+                    logging.error ( "Can't get data by table/view. Review table/view [ {} ]".format(e))
                     st.session_state.commit_edit = True
             except Exception as e:
               st.error(
@@ -716,7 +687,7 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
                 - Check connection to Router
                 """
                 )
-              logging.error ( "[629] Check Your Username/Password/Connection [ {} ]".format(e))
+              logging.error ( "Check Your Username/Password/Connection [ {} ]".format(e))
               st.session_state.commit_edit = True
       ############################## TAB3 Save and commit #################################################
       st.subheader('3. Save change and commit')
@@ -742,7 +713,7 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
               file_out.write(edit_view)
               file_out.write("\n")
               file_out.close()
-          print(f"[669][TAB3] Path is {edit_path_out}")
+          print(f"[TAB3] Path is {edit_path_out}")
                                              
           gitCommit(
             # repo_path=repo_path,
