@@ -1,4 +1,3 @@
-
 import streamlit as st
 from streamlit_ace import st_ace
 import pandas as pd # Data Frame
@@ -116,9 +115,9 @@ button[data-baseweb="tab"] > div[data-testid="stMarkdownContainer"] > p {
 """
 st.write(font_css, unsafe_allow_html=True)
 ################################################################
-                            
-                                                                        
-                                          
+
+
+
 
 sys.path.insert(0, config.get('path_junos_tableview', {}).get('path_module_utils'))
 from PYEZ_BASE_FUNC import PYEZ_TABLEVIEW_TO_DATAFRAME
@@ -134,7 +133,7 @@ from BASE_FUNC import LOGGER_INIT
                                                             
                   
                                                                                 
-list_file_result = ['conf_get_table.yml', 'op_get_protocols.yml', 'op_get_hardware.yml', 'op_get_system.yml', 'op_get_services.yml']
+list_file_result = ['conf_get_table.yml', 'op_get_protocols.yml', 'op_get_hardware.yml', 'op_get_system.yml', 'op_get_services.yml', 'op_get_links.yml']
 list_table_result=[] # Save list tables
 list_view_result=[] # Save list views
 dict_table_result={} # Save dict tables
@@ -216,23 +215,42 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
       with st.container(border = True):
         op = st.radio(
           ":orange[Choose your aim when you create tables/views : ]",
-          ["*Option 1*", "*Option 2*", "*Option 3*", "*Option 4*", "*Option 5*"],
-          captions = ["Extract :green[Protocols] ( Firewall, ARP, APS, BFD, BGP, OSPF, ISIS, MPLS, RSVP, LDP ...) informations from Junos devices.", 
+          ["*Option 1*", "*Option 2*", "*Option 3*", "*Option 4*", "*Option 5*", "*Option 6*"],
+          captions = ["Extract :green[Protocols] (ARP, APS, BFD, BGP, OSPF, ISIS, RSVP, LDP, MPLS LSP, LLDP, PIM, Route ...) informations from Junos devices.", 
           "Extract :green[Hardware] ( Alarms, Enviroment, Craft-interface, Fabric, Fan, FPC, Hardware, Power, ...) informations from Junos devices.", 
-          "Extract :green[System Operational] ( Interfaces, Alarms, Software, Connections, Storage, User, Snapshot, NTP ... ) informations from Junos devices.",
-          "Extract :green[Services State] ( BNG, l2circuit, l2vpn, mac-vrf, loop-detect, multicast, mvpn, network-access, nonstop-routing, policer, route, services, snmp ...) informations from Junos devices.", 
+          "Extract :green[System Operational] ( Alarms, Software, Connections, Storage, User, Snapshot, NTP, nonstop-routing... ) informations from Junos devices.",
+          "Extract :green[Services State] ( BNG, l2circuit, l2vpn, l3vpn, mac-vrf, loop-detect, mvpn, network-access, , firewall, policer, snmp ...) informations from Junos devices.", 
+          "Extract :green[Links State] (Interfaces, physical/logical, LACP, mpls interfaces, snmp ifl-index) informations from Junos devices.",
           "Retrieve :green[Configuration Data]."],
           index= None,
         )
         print('[TAB2] Option selected [%s]'%op)
-      ############## TAB2 Table ####################################################
+      col1, col2 = st.columns(2)
+      with col1:
+        ############## TAB2 Table ####################################################
+        with st.container(border = True):
+          st.write(":orange[Add Table]  *YAML with Identation = 4*")
+          add_table= st_ace(
+            language= config.get('config_streamlit_ace', {}).get('language'), 
+            theme= config.get('config_streamlit_ace', {}).get('theme'), 
+            show_gutter= config.get('config_streamlit_ace', {}).get('show_gutter'), 
+            keybinding=config.get('config_streamlit_ace', {}).get('keybinding') , 
+            auto_update= config.get('config_streamlit_ace', {}).get('auto_update'), 
+            placeholder= '* Compose your table structure*', 
+            height= 300)
+      with col2:
+        ############## TAB2 View ####################################################
+        with st.container(border = True):
+          st.write(":orange[Add View]  *YAML with Identation = 4*")
+          add_view= st_ace(
+            language= config.get('config_streamlit_ace', {}).get('language'), 
+            theme= config.get('config_streamlit_ace', {}).get('theme'), 
+            show_gutter= config.get('config_streamlit_ace', {}).get('show_gutter'), 
+            keybinding=config.get('config_streamlit_ace', {}).get('keybinding') , 
+            auto_update= config.get('config_streamlit_ace', {}).get('auto_update'), 
+            placeholder= '* Compose your view structure*', 
+            height= 300)
       with st.container(border = True):
-        st.write(":orange[Add Table]  *YAML with Identation = 4*")
-        add_table= st_ace(language= 'yaml', theme= 'monokai', show_gutter=True, keybinding="vscode" , auto_update= True, placeholder= '* Compose your table structure*', height= 300)
-      ############## TAB2 View ####################################################
-      with st.container(border = True):
-        st.write(":orange[Add View]  *YAML with Identation = 4*")
-        add_view= st_ace(language= 'yaml', theme= 'monokai', show_gutter=True, keybinding="vscode" , auto_update= True, placeholder= '* Compose your view structure*', height= 300)
         if op:  # Check state of selecting
           if (add_table.find(':') != -1) and add_table.split(':')[0].endswith("Table") and (add_table.find("view") != -1):
             print("[TAB2] Table must end with Table, must have view:, must have :, [PASS]")
@@ -453,7 +471,7 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
                 #st.code(add_table, language='yaml')
                 #st.code(add_view, language='yaml')
             case "*Option 5*":
-                path_out = config.get('path_junos_tableview', {}).get('path_table_view') + "/conf_get_table.yml"
+                path_out = config.get('path_junos_tableview', {}).get('path_table_view') + "/op_get_links.yml"
                 print('[TAB2] Save table/view to %s'%path_out)
                 with open(path_out, 'a') as file_out :
                   file_out.write("\n")
@@ -465,6 +483,19 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
                   file_out.write(add_view)
                   file_out.write("\n")
                   file_out.close()     
+            case "*Option 6*":
+                path_out = config.get('path_junos_tableview', {}).get('path_table_view') + "/conf_get_table.yml"
+                print('[TAB2] Save table/view to %s'%path_out)
+                with open(path_out, 'a') as file_out :
+                  file_out.write("\n")
+                  file_out.write("#")
+                  file_out.write(datetime.now(timezone(timedelta(hours=+7), 'ICT')).strftime("%d/%m/%Y %H:%M:%S"))
+                  file_out.write("\n")
+                  file_out.write(add_table)
+                  file_out.write("\n")
+                  file_out.write(add_view)
+                  file_out.write("\n")
+                  file_out.close()  
                   #st.code(add_table, language='yaml')
                   #st.code(add_view, language='yaml')
           print(f"[TAB2] save+commit, path is {path_out}")                             
@@ -502,23 +533,47 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
             with st.container(border = True) as container:
               dict_temp1_tab3[option] = dict_table_result.get(option)
               st.write(':green[**Table**]')
-              edit_table= st_ace(value= yaml.dump(dict_temp1_tab3, indent = 4), language= 'yaml', theme= 'monokai', show_gutter=True, keybinding="vscode" , auto_update= True, height= 200)
+              edit_table= st_ace(value= yaml.dump(dict_temp1_tab3, indent = 4), 
+              language= config.get('config_streamlit_ace', {}).get('language'), 
+              theme= config.get('config_streamlit_ace', {}).get('theme'), 
+              show_gutter= config.get('config_streamlit_ace', {}).get('show_gutter'), 
+              keybinding=config.get('config_streamlit_ace', {}).get('keybinding') , 
+              auto_update= config.get('config_streamlit_ace', {}).get('auto_update'), 
+              height= 200)
               #edit_table= container.text_area(':green[Table]', yaml.dump(dict_temp1_tab3, indent = 4), height= 250)
               ####### Display for edit args in table
               if list(dict_temp1_tab3.get(option).keys()).count('args') == 0:
                 st.write(':green[**Args**]')
-                edit_table_args= st_ace(value= '', language= 'yaml', theme= 'monokai', show_gutter=True, keybinding="vscode" , auto_update= True, height= 100)
+                edit_table_args= st_ace(value= '', 
+              language= config.get('config_streamlit_ace', {}).get('language'), 
+              theme= config.get('config_streamlit_ace', {}).get('theme'), 
+              show_gutter= config.get('config_streamlit_ace', {}).get('show_gutter'), 
+              keybinding=config.get('config_streamlit_ace', {}).get('keybinding') , 
+              auto_update= config.get('config_streamlit_ace', {}).get('auto_update'),  
+                height= 100)
                 #edit_table_args= container.text_area(':green[Args]', height= 150)
               else:
                 st.write(':green[**Args**]')
-                edit_table_args= st_ace(value= yaml.dump(dict_temp1_tab3.get(option).get('args'), indent = 4), language= 'yaml', theme= 'monokai', show_gutter=True, keybinding="vscode" , auto_update= True, height= 100)
+                edit_table_args= st_ace(value= yaml.dump(dict_temp1_tab3.get(option).get('args'), indent = 4), 
+              language= config.get('config_streamlit_ace', {}).get('language'), 
+              theme= config.get('config_streamlit_ace', {}).get('theme'), 
+              show_gutter= config.get('config_streamlit_ace', {}).get('show_gutter'), 
+              keybinding=config.get('config_streamlit_ace', {}).get('keybinding') , 
+              auto_update= config.get('config_streamlit_ace', {}).get('auto_update'), 
+                height= 100)
                 #edit_table_args= container.text_area(':green[Args]', yaml.dump(dict_temp1_tab3.get(option).get('args'), indent = 4), height= 150)
           with col2:
             dict_temp2_tab3={}
             with st.container(border = True) as container:
               dict_temp2_tab3[dict_table_result.get(option).get("view")] = dict_view_result.get(dict_table_result.get(option).get("view"))
               st.write(':green[**View**]')
-              edit_view= st_ace(value= yaml.dump(dict_temp2_tab3, indent = 4), language= 'yaml', theme= 'monokai', show_gutter=True, keybinding="vscode" , auto_update= True, height= 380)
+              edit_view= st_ace(value= yaml.dump(dict_temp2_tab3, indent = 4), 
+              language= config.get('config_streamlit_ace', {}).get('language'), 
+              theme= config.get('config_streamlit_ace', {}).get('theme'), 
+              show_gutter= config.get('config_streamlit_ace', {}).get('show_gutter'), 
+              keybinding=config.get('config_streamlit_ace', {}).get('keybinding') , 
+              auto_update= config.get('config_streamlit_ace', {}).get('auto_update'), 
+              height= 380)
               #edit_view= container.text_area(':green[View]', yaml.dump(dict_temp2_tab3, indent = 4), height= 445)
         try:
           edit_path_out = dict_path.get(option)
@@ -633,6 +688,7 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
                     file.write('\n')
                     file.write(edit_view)
                     file.close()
+                  print(edit_table.split(':')[0][:-5])
                   raw= GET_PYEZ_TABLEVIEW_RAW(dev= dev, data_type = edit_table.split(':')[0][:-5] ,tableview_file= 'file_test_temp.yml', kwargs= args_dict)
                   raw.get()
                   print("[TAB3] This is TABLEVIEW_RAW [%s]"%raw)
@@ -802,7 +858,14 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
       with st.expander(":blue[XPath Tester - Evaluator]"):
           st.subheader('Allows you to test your XPath expressions/queries against a XML.')
           st.write(':orange[*Step 1: Copy-paste your XML here*] ')
-          example_xml= st_ace(language= 'xml', theme= 'monokai', show_gutter=True, keybinding="vscode" , auto_update= True, placeholder= '* Your XML*', height= 300)
+          example_xml= st_ace(
+            language= 'xml', 
+            theme= config.get('config_streamlit_ace', {}).get('theme'), 
+            show_gutter= config.get('config_streamlit_ace', {}).get('show_gutter'), 
+            keybinding=config.get('config_streamlit_ace', {}).get('keybinding') , 
+            auto_update= config.get('config_streamlit_ace', {}).get('auto_update'), 
+            placeholder= '* Your XML*', 
+            height= 300)
           st.write(':orange[*Step 2: XPath expression*] ')
           #example_xpath= st_ace(language= 'xml', theme= 'monokai', show_gutter=True, keybinding="vscode" , auto_update= True, placeholder= '* Your XPath*', height= 300)
           #example_xml= st.text_area(':orange[Step 1: Copy-paste your XML here] ', height=300)
