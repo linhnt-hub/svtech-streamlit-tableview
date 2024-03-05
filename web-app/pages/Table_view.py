@@ -81,53 +81,18 @@ from BASE_FUNC import LOGGER_INIT
 ## all stderr data (which include formatted log) to the LogData tab
 #LOGGER_INIT(log_level=logging.DEBUG, print_log_init = False, shell_output= False) 
 
-########################### Read file ########3#################                                                        
-#list_file_result = ['conf_get_table.yml', 'op_get_protocols.yml', 'op_get_hardware.yml', 'op_get_system.yml', 'op_get_services.yml', 'op_get_links.yml']
+########################### Varriable #########################                                                        
 list_table_result=[] # Save list tables
 list_view_result=[] # Save list views
 dict_table_result={} # Save dict tables
 dict_view_result={}  # Save dict views
-#dict_path={}  # Save dict path
-                              
-
-########################### Browser file #######################
-# try:
-#   for j in range(len(list_file_result)):
-#     path = config.get('path_junos_tableview', {}).get('path_table_view') + "/" + list_file_result[j]
-#     file_yml = yaml.load(open(path,"r"), Loader=yaml.FullLoader)
-#     res_table = {key: val for key, val in file_yml.items() if key.endswith("Table")}  # Get dict Table
-#     res_view = {key: val for key, val in file_yml.items() if key.endswith("iew")}     # Get dict View
-#     if res_table:
-#       for i in range(len(list(res_table.keys()))):
-#         list_table_result.append(list(res_table.keys())[i]) # Save name table to list
-#         dict_table_result.update(res_table)                 # Save dict_table to dict
-#         dict_path [list(res_table.keys())[i]]= path                            
-#     if res_view:
-#       for i in range(len(list(res_view.keys()))):
-#         list_view_result.append(list(res_view.keys())[i])
-#         dict_view_result.update(res_view)    # Save dict_view to dict
-# except Exception as e:
-#   print("[115] [Browser File] An exception occurred, check file yaml %s" %e)
 
 try:
   tableview_cat= GET_TABLEVIEW_CATALOGUE(config.get('path_junos_tableview', {}).get('path_table_view'))
-  #res_table = {key: val for key, val in tableview_cat.items() if key.endswith("Table")}  # Get dict Table
   dict_table_result = {key: val for key, val in tableview_cat.items() if key.endswith("Table")}  # Get dict Table
-  # for i in range(len(list(dict_table.keys()))):
-  #   dict_table_result[list(dict_table.keys()[i])] = dict_table.get('content')
-  #res_view = {key: val for key, val in tableview_cat.items() if key.endswith("iew")}     # Get dict View
   dict_view_result = {key: val for key, val in tableview_cat.items() if key.endswith("iew")}  # Get dict View
   list_table_result= list(dict_table_result.keys())
   list_view_result= list(dict_view_result.keys())
-  # if res_table:
-  #   for i in range(len(list(res_table.keys()))):
-  #     list_table_result.append(list(res_table.keys())[i]) # Save name table to list
-  #     dict_table_result.update(res_table)                 # Save dict_table to dict
-  #     dict_path [list(res_table.keys())[i]]= path                            
-  # if res_view:
-  #   for i in range(len(list(res_view.keys()))):
-  #     list_view_result.append(list(res_view.keys())[i])
-  #     dict_view_result.update(res_view)    # Save dict_view to dict
 except Exception as e:
   print("[Call GET_TABLEVIEW_CATALOGUE] An exception occurred, check error %s" %e)
 
@@ -139,14 +104,14 @@ if 'test_table' not in st.session_state:
   st.session_state.commit_edit = True
   st.session_state.commit_del_edit = True
 
-######################## Parent TAB ##########################
+######################## Parent TAB ##########################################
 tab5, tab6, tab7 = st.tabs(["🔢 TABLES / VIEWS", "📩 TERMINAL LOG", "📞LOG DATA"])
 with st_stdout("code",tab6), st_stderr("code",tab7):
   with tab5:
     tab1, tab2, tab3, tab4 = st.tabs(["1️⃣ VIEW","2️⃣CREATE", "3️⃣ EDIT / TEST", "4️⃣RPC CHECK / XPATH TESTER"])
-    ################# TAB1 #############
+    ################# TAB1 ##########################################
     with tab1:
-      st.subheader('Look Table/View Content ')
+      st.subheader('1. Get Table/View By Selection')
       options = st.multiselect(':orange[Type or select for searching]',dict_table_result.keys(), placeholder = 'Select for view')
       for opt in options:
         print('[TAB1] You selected:[%s] with path [%s]' %(opt, dict_table_result.get(opt).get('dir')))
@@ -161,13 +126,11 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
                   dict_temp1_tab1={}
                   container = st.container(border = True)
                   dict_temp1_tab1[option] = dict_table_result.get(option).get('content')
-                  #container.code("%s" % option, language= 'yaml')
                   container.code(yaml.dump(dict_temp1_tab1, indent = 4), language = 'yaml', line_numbers= True) # Display dict by yaml format
               with col2:
                   dict_temp2_tab1={}
                   container = st.container(border = True)
                   dict_temp2_tab1[dict_table_result.get(option).get('content').get('view')] = dict_view_result.get(dict_table_result.get(option).get('content').get('view')).get('content')
-                  #container.code("%s" % dict_table_result.get(option).get("view"), language= 'yaml')
                   container.code(yaml.dump(dict_temp2_tab1, indent = 4), language = 'yaml', line_numbers= True)
       with st.container(border = True) as container:
         col3, col4 = st.columns([9,1])
@@ -175,9 +138,46 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
           st.write("*Use beside button for exporting your selection ...*")
         with col4:
           # Export button
-          st.download_button('Export', "---"+"\n"+ yaml.dump(dict_export_file, indent = 4, encoding= None))
-      with st.expander(":blue[List Table]"):
-        st.json(json.dumps(list(dict_table_result.keys()), indent=4))
+          st.download_button('Export', "---"+"\n"+ yaml.dump(dict_export_file, indent = 4, encoding= None), key= '1')
+      #############Search table by key###########################
+      st.subheader('2. Get List Table/View By Keywork')
+      option_fil=[]
+      kw= st.text_input(':orange[Type your keyword:]')
+      #option_fil = {val for val in list_table_result if val.endswith("%s"%kw)}
+      if kw:
+        print('[TAB1] Search by key: %s'%kw)
+        for i in range(len(list_table_result)):
+            x= re.search(kw,list_table_result[i],re.IGNORECASE)
+            if x != None:
+                option_fil.append(list_table_result[i])
+      else:
+        print('[TAB1] Key empty')
+      for opt in option_fil:
+        print('[TAB1] You selected:[%s] with path [%s]' %(opt, dict_table_result.get(opt).get('dir')))
+      dict_export_file={}  # Variable for export button
+      if option_fil:
+        for option in option_fil:
+            dict_export_file[option]= dict_table_result.get(option).get('content')
+            dict_export_file[dict_table_result.get(option).get('view')] = dict_view_result.get(dict_table_result.get(option).get('view')).get('content')
+            with st.container(border = True) as container:
+              col1, col2 = st.columns(2)
+              with col1:
+                  dict_temp1_tab1={}
+                  container = st.container(border = True)
+                  dict_temp1_tab1[option] = dict_table_result.get(option).get('content')
+                  container.code(yaml.dump(dict_temp1_tab1, indent = 4), language = 'yaml', line_numbers= True) # Display dict by yaml format
+              with col2:
+                  dict_temp2_tab1={}
+                  container = st.container(border = True)
+                  dict_temp2_tab1[dict_table_result.get(option).get('content').get('view')] = dict_view_result.get(dict_table_result.get(option).get('content').get('view')).get('content')
+                  container.code(yaml.dump(dict_temp2_tab1, indent = 4), language = 'yaml', line_numbers= True)
+      with st.container(border = True) as container:
+        col3, col4 = st.columns([9,1])
+        with col3:
+          st.write("*Use beside button for exporting your selection ...*")
+        with col4:
+          # Export button
+          st.download_button('Export', "---"+"\n"+ yaml.dump(dict_export_file, indent = 4, encoding= None), key= '2')
     ###################### TAB2 ################################
     with tab2:
       st.subheader('1. Create new Table/View ')
@@ -238,7 +238,6 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
                     list_err_table = list(error_table)
                     list_err_view = list(error_view)
                     if (len(list_err_table) + len(list_err_view)) != 0:
-                      #st.write(list_err_table)
                       for i in range(len(list_err_table)):
                         str1= str(list_err_table[i]).split(':')
                         st.error(":red[Check [ Table ] line %s from character %s with *%s*]" %(str1[0], str1[1], str1[2]))
@@ -322,7 +321,6 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
           ''')
           st.session_state.test_table = True
           st.session_state.commit = True
-      #with st.expander(":blue[See when you want to dicovery RPC with your router]"):
       st.subheader('2. Try your new table/view with your router')
       print('[TAB2] Test table/view with router')
       #############################TAB2 Form test table/view #####################################
@@ -339,16 +337,11 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
                 print('[TAB2] Are we connected?', dev.connected)
                 try:
                     myYAML="".join([add_table,"\n",add_view])
-                    #print(myYAML) 
                     globals().update(FactoryLoader().load(yaml.load(myYAML, Loader=yaml.FullLoader)))
-                    #print("*" * 70, "\n")
                     exec('table_object = %s(dev)'%add_table.split(':')[0]) 
                     table_object.get()
                     dataframe= PYEZ_TABLEVIEW_TO_DATAFRAME(dev= dev, tableview_obj= table_object)
-                    st.dataframe(dataframe)
-                    #print(dataframe)
-                    #print(pd.DataFrame(dataframe))
-                                                
+                    st.dataframe(dataframe)                 
                     st.success('''
                     Get successfully\n
                     Use button below for creating and commit
@@ -361,7 +354,7 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
                     """
                     - Can't get data by table/view. Review table/view
                     """)
-                    print("[392] [TAB2] Check exception %s"%e)
+                    print("[TAB2] Check exception %s"%e)
                     st.session_state.commit = True
             except Exception as e:
               st.error(
@@ -370,7 +363,7 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
                 - Check connection to Router
                 """
                 )
-              print('[351] [TAB2] Check exception %s'%e)
+              print('[TAB2] Check exception %s'%e)
               st.session_state.commit = True
       
       ##################################### TAB2 Create and commit #####################################
@@ -393,8 +386,6 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
                 file_out.write(add_view)
                 file_out.write("\n")
                 file_out.close()
-                #st.code(add_table, language='yaml')
-                #st.code(add_view, language='yaml')
             case "*Option 2*":
               path_out = config.get('path_junos_tableview', {}).get('path_table_view') + "/op_get_hardware.yml"
               print('[TAB2] Save table/view to %s'%path_out)
@@ -408,8 +399,6 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
                 file_out.write(add_view)
                 file_out.write("\n")
                 file_out.close()
-                #st.code(add_table, language='yaml')
-                #st.code(add_view, language='yaml')
             case "*Option 3*":
               path_out = config.get('path_junos_tableview', {}).get('path_table_view') + "/op_get_system.yml"
               print('[TAB2] Save table/view to %s'%path_out)
@@ -423,8 +412,6 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
                 file_out.write(add_view)
                 file_out.write("\n")
                 file_out.close()
-                #st.code(add_table, language='yaml')
-                #st.code(add_view, language='yaml')
             case "*Option 4*":
               path_out = config.get('path_junos_tableview', {}).get('path_table_view') + "/op_get_services.yml"
               print('[TAB2] Save table/view to %s'%path_out)
@@ -438,8 +425,6 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
                 file_out.write(add_view)
                 file_out.write("\n")
                 file_out.close()
-                #st.code(add_table, language='yaml')
-                #st.code(add_view, language='yaml')
             case "*Option 5*":
                 path_out = config.get('path_junos_tableview', {}).get('path_table_view') + "/op_get_links.yml"
                 print('[TAB2] Save table/view to %s'%path_out)
@@ -466,8 +451,6 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
                   file_out.write(add_view)
                   file_out.write("\n")
                   file_out.close()  
-                  #st.code(add_table, language='yaml')
-                  #st.code(add_view, language='yaml')
           print(f"[TAB2] save+commit, path is {path_out}")                             
           gitCommit(
             # repo_path=repo_path,
@@ -550,12 +533,6 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
           edit_file_yml = yaml.load(open(edit_path_out,"r"), Loader=yaml.FullLoader)
           dict_table_tab3 = {key: val for key, val in edit_file_yml.items() if key.endswith("Table")}  # Get dict Table
           dict_view_tab3 = {key: val for key, val in edit_file_yml.items() if key.endswith("iew")}     # Get dict View
-          # if edit_res_table:
-          #   #for i in range(len(list(edit_res_table.keys()))):
-          #   dict_table_tab3.update(edit_res_table) # Save table to dict
-          # if edit_res_view:
-          #   #for i in range(len(list(edit_res_view.keys()))):
-          #   dict_view_tab3.update(edit_res_view)  # Save view to dict
         except Exception as e:
           st.error("[TAB3] Read file yaml fail with log error [%s]"%e)
           print("[TAB3] Read file yaml fail with log error [%s]"%e)
@@ -640,33 +617,13 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
             #print(args_dict)
             try:
               with Device(host=router, user= user, password= passwd) as dev:
-                #print('Are we connected?', dev.connected)
                 try:
-                  #myYAML= "".join([edit_table,"\n",edit_view])
-                  # myYAML= myYAML[:(myYAML.find('args')-4)] + '\n' + myYAML[(myYAML.find('args')-4):]
-                  # print(myYAML)
-                  #globals().update(FactoryLoader().load(yaml.load(myYAML, Loader=yaml.FullLoader)))
-                  #st.write(yaml.args)
-                  #print("*" * 70, "\n")
-                  #exec('table_object = %s(dev)'%edit_table.split(':')[0]) 
-                  #table_object.get()
-                  #dataframe= PYEZ_TABLEVIEW_TO_DATAFRAME(dev= dev, tableview_obj= table_object)
-                  #st.dataframe(dataframe)
-                  #print("[TAB3] Create file test_temp")
-                  # with open('file_test_temp.yml','w') as file:
-                  #   file.write(edit_table)
-                  #   file.write('\n')
-                  #   file.write(edit_view)
-                  #   file.close()
-                  #raw= GET_PYEZ_TABLEVIEW_RAW(dev= dev, data_type = edit_table.split(':')[0][:-5] ,tableview_file= 'file_test_temp.yml', kwargs= args_dict)
                   print("[TAB3] Call GET_PYEZ_TABLEVIEW")
                   tv_obj = GET_PYEZ_TABLEVIEW(dev= dev, data_type = edit_table.split(':')[0][:-5], kwargs= args_dict)
                   tv_obj.get()
                   print("[TAB3] Call PYEZ_TABLEVIEW_TO_DATAFRAME [%s]"%tv_obj)
                   dataframe= PYEZ_TABLEVIEW_TO_DATAFRAME(dev= dev, tableview_obj= tv_obj)
                   st.dataframe(dataframe)
-                  #st.write(raw.items())
-                  #os.remove('file_test_temp.yml')
                   st.toast(':blue[Get successfully]')
                   st.success('''
                   Use button below for saving and commit
@@ -713,8 +670,7 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
               file_out.write(edit_view)
               file_out.write("\n")
               file_out.close()
-          print(f"[TAB3] Path is {edit_path_out}")
-                                             
+          print(f"[TAB3] Path is {edit_path_out}")                                
           gitCommit(
             # repo_path=repo_path,
             file_commit = edit_path_out,
@@ -722,7 +678,6 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
             # remote=remote,
             # branch_name= branch_name
             )
-          # print(34, file_commit)
           gitpr(
             title='fix: Modify file Junos_tableview',
             body='This PR to modify file Junos_tableview'
@@ -779,18 +734,10 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
               time.sleep(1)
               try:
                 with Device(host=router, user= user, password= passwd, normalize=True) as dev:
-                  #print('Are we connected?', dev.connected)
                   try:
-                    # print("*" * 70, "\n")
-                    # response_xml = dev.cli(command, format='xml')
-                    # root = etree.fromstring(response_xml)
-                    # st.write(root)
                     rpc_cmd = dev.display_xml_rpc(command, format= 'xml').tag.replace("-", "_")
                     exec('a1=dev.rpc.%s(normalize=True)'%rpc_cmd)
-                    #st.write(etree.tostring(a1, encoding= 'unicode'))
                     st.code(dev.display_xml_rpc(command, format= 'text'), language='yaml')
-                    #print(command, f"= {sys_cmd}", "\n" + "-" * 70)
-                    #print("\n\n" + "*" * 70)
                     col1, col2 = st.columns([1,9])
                     with col1:
                       st.code('RPC >>>')
@@ -800,17 +747,13 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
                     if is_valid:
                       st.info("Result:")
                       print('[TAB4] Element of RPC XPath %s'%a1.xpath(xpath))
-                      #list_xml= []
                       for e in a1.xpath(xpath):
                         xml_minidom = xml.dom.minidom.parseString(etree.tostring(e)) # Func display xml like pretty
                         xml_pretty = xml_minidom.toprettyxml()
                         st.code(xml_pretty, language= 'xml')
-                        #list_xml.append(etree.tostring(e, encoding='UTF-8'))
-                      #st.write(list_xml)
                       st.toast(':blue[Done]')
                     else:
                       st.error(f"Syntax XPath is invalid. Error message: [{error_message}]")
-                    #st.code(dev.cli(command), language='yaml', line_numbers= True)
                     dev.close()
                   except Exception as e:
                       print('[769][TAB4] Error exception is [%s]'%e)
@@ -838,15 +781,10 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
             placeholder= '* Your XML*', 
             height= 300)
           st.write(':orange[*Step 2: XPath expression*] ')
-          #example_xpath= st_ace(language= 'xml', theme= 'monokai', show_gutter=True, keybinding="vscode" , auto_update= True, placeholder= '* Your XPath*', height= 300)
-          #example_xml= st.text_area(':orange[Step 1: Copy-paste your XML here] ', height=300)
           example_xpath= st.text_input(':orange[Step 2: XPath expression] ', label_visibility="hidden")
-          #st.code(example_xml, language = 'xml')
           if example_xml:
             if example_xpath:
               is_valid, error_message = check_xpath_syntax(example_xpath)
-              # Display the result_xml
-              #st.write(f"XPath Expression: {example_xpath}")
               if is_valid:
                   st.write(":blue[Result is :]")
                   try:
@@ -856,7 +794,6 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
                       xml_minidom1 = xml.dom.minidom.parseString(etree.tostring(e))
                       xml_pretty1 = xml_minidom1.toprettyxml()
                       st.code(xml_pretty1, language= 'xml')
-                    #st.write(xml_pretty1)
                   except Exception as e:
                     st.error("XML syntax error %s"%e)
               else:
