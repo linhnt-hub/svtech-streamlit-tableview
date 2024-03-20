@@ -21,6 +21,29 @@ from lxml import etree
 import xml.etree.ElementTree as et
 import xml.dom.minidom
 
+import tarfile
+import zipfile
+import rarfile
+from io import BytesIO
+import base64
+import tempfile
+#sudo apt install unrar
+
+def extract_tar(data, output_dir):
+    with tarfile.open(fileobj=BytesIO(data), mode='r') as tar:
+        tar.extractall(output_dir)
+
+def extract_tar_gz(data, output_dir):
+    with tarfile.open(fileobj=BytesIO(data), mode='r:gz') as tar_gz:
+        tar_gz.extractall(output_dir)
+
+def extract_zip(data, output_dir):
+    with zipfile.ZipFile(BytesIO(data), 'r') as zip_file:
+        zip_file.extractall(output_dir)
+
+def extract_rar(data, output_dir):
+    with rarfile.RarFile(BytesIO(data), 'r') as rar:
+        rar.extractall(output_dir)
 def evaluate_xpath(xml_content, xpath_expression):
     try:
         # Parse the XML content
@@ -31,6 +54,13 @@ def evaluate_xpath(xml_content, xpath_expression):
         return result
     except etree.XPathError as e:
         return f"XPathError: {e}"
+def download_file(filepath, filename):
+    with open(filepath, "rb") as f:
+        data = f.read()
+        print(111,data)
+    b64 = base64.b64encode(data).decode()
+    href = f'<a href="data:application/octet-stream;base64,{b64}" download="{filename}">Click here to download {filename}</a>'
+    return href
 def check_xpath_syntax(xpath_expression):
     try:
         # Attempt to create an XPath object with the given expression
@@ -108,7 +138,7 @@ if 'test_table' not in st.session_state:
 tab5, tab6, tab7 = st.tabs(["🔢 TABLES / VIEWS", "📩 TERMINAL LOG", "📞LOG DATA"])
 with st_stdout("code",tab6), st_stderr("code",tab7):
   with tab5:
-    tab1, tab2, tab3, tab4 = st.tabs(["1️⃣ VIEW","2️⃣CREATE", "3️⃣ EDIT / TEST", "4️⃣RPC CHECK / XPATH TESTER"])
+    tab1, tab2, tab3, tab4, tab5 = st.tabs(["1️⃣ VIEW","2️⃣CREATE", "3️⃣ EDIT / TEST", "4️⃣OFFLINE DATA", "5️⃣RPC CHECK / XPATH TESTER"])
     ################# TAB1 ##########################################
     with tab1:
       st.subheader('1. Get Table/View By Selection')
@@ -142,7 +172,7 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
       #############Search table by key###########################
       st.subheader('2. Get List Table/View By Keywork')
       option_fil=[]
-      kw= st.text_input(':orange[Type your keyword:]')
+      kw= st.text_input(':orange[Type your keyword:]', placeholder = 'Your keyword with case-insensitive')
       #option_fil = {val for val in list_table_result if val.endswith("%s"%kw)}
       if kw:
         print('[TAB1] Search by key: %s'%kw)
@@ -159,7 +189,7 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
         for option in option_fil:
             dict_export_file[option]= dict_table_result.get(option).get('content')
             dict_export_file[dict_table_result.get(option).get('view')] = dict_view_result.get(dict_table_result.get(option).get('view')).get('content')
-            with st.container(border = True) as container:
+            with st.expander(":green[%s]"%option):
               col1, col2 = st.columns(2)
               with col1:
                   dict_temp1_tab1={}
@@ -720,6 +750,127 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
         st.session_state.commit_del_edit = True
     ###################### TAB4 ##########################################################################
     with tab4:
+      st.subheader('1. Select Table/View ')
+      option = st.multiselect(':orange[Type or select for searching]',dict_table_result.keys(), placeholder = 'Select table/view')
+      #list_data_type = option
+      if option:
+        for option in option:
+          print('[TAB4] You selected: [%s] with path [%s]'%(option, dict_table_result.get(option).get('dir')))
+          # list_data_type.append(option)
+          dict_export_file[option]= dict_table_result.get(option).get('content')
+          dict_export_file[dict_table_result.get(option).get('view')] = dict_view_result.get(dict_table_result.get(option).get('view')).get('content')
+          with st.expander(":green[%s]"%option):
+            col1, col2 = st.columns(2)
+            with col1:
+                dict_temp1_tab4={}
+                container = st.container(border = True)
+                dict_temp1_tab4[option] = dict_table_result.get(option).get('content')
+                container.code(yaml.dump(dict_temp1_tab4, indent = 4), language = 'yaml', line_numbers= True) # Display dict by yaml format
+            with col2:
+                dict_temp2_tab4={}
+                container = st.container(border = True)
+                dict_temp2_tab4[dict_table_result.get(option).get('content').get('view')] = dict_view_result.get(dict_table_result.get(option).get('content').get('view')).get('content')
+                container.code(yaml.dump(dict_temp2_tab4, indent = 4), language = 'yaml', line_numbers= True)
+      ########################## TAB4 Test table/view witch offline data ####################################################
+      st.subheader('2. Import your XML offline data')
+      uploaded_file = st.file_uploader("Choose a file", type=["tar", "gz", "zip", "rar"])
+      submitted = st.button(label= "Run")
+      if uploaded_file is not None and submitted:
+        with st.spinner('Wait for it...'):
+          time.sleep(1)
+          file_contents = uploaded_file.read()
+          file_name = os.path.splitext(uploaded_file.name)[0]
+          file_format = uploaded_file.name.split('.')[-1]
+          # Specify the output directory where you want to extract the contents
+          timestamp = datetime.now().strftime('%Y_%m_%d_%H_%M_%S')
+          output_directory= os.path.join(config.get('path_junos_tableview', {}).get('dir_output'), f"{file_name}_{timestamp}")
+          ## extract file input and save to output directory
+          if file_format == "tar":
+              extract_tar(file_contents, output_directory)
+          elif file_format == "gz":
+              extract_tar_gz(file_contents, output_directory)
+          elif file_format == "zip":
+              extract_zip(file_contents, output_directory)
+          elif file_format == "rar":
+              extract_rar(file_contents, output_directory)
+          list_result = []
+          list_result_all = []
+          try:
+            if os.path.isdir(output_directory):
+              for item in os.listdir(output_directory):
+                  item_path = os.path.join(output_directory, item)
+                  if os.path.isdir(item_path):
+                      dir_xml= os.path.join(output_directory, file_name)
+                  else:
+                      dir_xml= output_directory
+            else:
+                print(f"{output_directory} not directory")
+            print("[TAB3] Call GET_PYEZ_TABLEVIEW")
+            for filename in os.listdir(dir_xml):
+                if os.path.isfile(os.path.join(dir_xml, filename)):
+                  with open(os.path.join(dir_xml, filename), 'r') as file:
+                      content = file.read()
+                      # get hostname device in file log 
+                      hostname = (re.search(r'@(.+?)(?=>)', content))
+                      if hostname:
+                          hostname = hostname.group(1)
+                      else:
+                        print(f"Hostname is not exist in file {file_name}")
+                      # Extract content between rpc-reply tags
+                      rpc_reply_content = re.findall(r'<rpc-reply(.*?)</rpc-reply>', content, re.DOTALL)
+
+                      if rpc_reply_content:
+                        with open(os.path.join(dir_xml, f"{hostname}.xml"), 'a') as outfile:
+                            for rpc_reply_content  in rpc_reply_content:
+                                outfile.write("<rpc-reply ")
+                                outfile.write(rpc_reply_content.strip())
+                                outfile.write('\n</rpc-reply>\n')
+                      # Remove show commands and cli from the XML file
+                      if os.path.exists(os.path.join(dir_xml, f"{hostname}.xml")):
+                          with open(os.path.join(dir_xml, f"{hostname}.xml"), 'r+') as file:
+                              content = file.read()
+                              content = re.sub(r'^\s*<show.*?/>', '', content, flags=re.MULTILINE)
+                              file.seek(0)
+                              file.write(content)
+                              file.truncate()
+                      with open(os.path.join(dir_xml, f"{hostname}.xml"), 'r+') as file:
+                          content = file.read()
+                          file.seek(0)
+                          file.write(f"<div>\n{content}</div>\n")   
+            excel_file_path= os.path.join(dir_xml, "output_excel.xlsx")  
+            with pd.ExcelWriter(excel_file_path) as writer:
+              st.session_state.status = True         
+              for data_type in option:
+                try:
+                  final_result=pd.DataFrame()
+                  tableview_file= dict_table_result.get(data_type).get('dir')
+                  defined_tablelist = IMPORT_JUNOS_TABLE_VIEW(tableview_file)
+                  for file in os.listdir(dir_xml):
+                      if file.endswith('.xml'):
+                        hostname= os.path.splitext(file)[0]
+                        xml_path= os.path.join(dir_xml,file)
+                        data = defined_tablelist[data_type](path=xml_path)
+                        data.get()
+                        if len(data.get()) != 0:
+                            data_frame = PYEZ_TABLEVIEW_TO_DATAFRAME(tableview_obj=data, include_hostname=False)
+                            data_frame.insert(0, 'hostname', hostname)
+                            final_result=pd.concat([final_result, data_frame], ignore_index=True)
+                except Exception as e:
+                  logging.error(e)
+                final_result.to_excel(writer, sheet_name=data_type, index=False)
+                st.write(f"<p style='color:green;'>Output for <strong>{data_type}</strong>:</p>", unsafe_allow_html=True)
+                st.dataframe(final_result)
+              st.toast(':blue[Get successfully]')
+              st.download_button('Export All',open(excel_file_path,'rb').read(), "output_excel.xlsx",mime="application/octet-stream",disabled= st.session_state.status)
+          except Exception as e:
+              st.error(
+              """
+              - Can't get data by table/view. Review table/view
+              """)
+              logging.error ( "Can't get data by table/view. Review table/view [ {} ]".format(e))
+
+    ###################### TAB5 ##########################################################################
+    with tab5:
       with st.expander(":blue[See when you want to dicovery RPC with your router and evaluate xpath]"):
         st.subheader('Discovery RPC with your router and evaluate xpath')
         with st.form("form6"):
@@ -762,7 +913,7 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
                       No command entered or xml rpc equivalent of this command is not available.
                       """)
               except Exception as e:
-                print('[775][TAB4] Error exception is [%s]'%e)
+                print('[TAB5] Error exception is [%s]'%e)
                 st.error(
                   """
                   - Check Your Username/Password\n
@@ -789,7 +940,7 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
                   st.write(":blue[Result is :]")
                   try:
                     result_xml = evaluate_xpath(example_xml, example_xpath)
-                    print('[TAB4] Element of XPath Tester %s'%result_xml)
+                    print('[TAB5] Element of XPath Tester %s'%result_xml)
                     for e in result_xml:
                       xml_minidom1 = xml.dom.minidom.parseString(etree.tostring(e))
                       xml_pretty1 = xml_minidom1.toprettyxml()
