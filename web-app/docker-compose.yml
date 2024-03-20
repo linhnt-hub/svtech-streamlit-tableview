@@ -1,0 +1,14 @@
+version: '3'
+services: 
+  streamlit_apps:
+    container_name: streamlit_application
+    image: "hiennnnguyen/streamlit_apps:version$VERSION"
+    ports: 
+      - 80:8501 
+    restart: always
+    environment:
+      - TZ=Asia/Ho_Chi_Minh
+      - DB_DIR=$DB_DIR
+      - VERSION=$VERSION
+    volumes:
+      - C:\Users\Public\collect_data:$DB_DIR

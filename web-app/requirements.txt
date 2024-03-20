@@ -1,3 +1,10 @@
-yamllint
-lxml
+junos_eznc==2.6.7
+matplotlib==3.7.3
+netgraph==4.12.11
+networkx==3.1
+numpy==1.25.2
+pandas==2.1.1
+pyvis==0.3.2
+streamlit==1.26.0
+streamlit_option_menu==0.3.6
 streamlit-ace=0.1.1
