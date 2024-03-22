@@ -26,9 +26,76 @@ import zipfile
 import rarfile
 from io import BytesIO
 import base64
-import tempfile
-#sudo apt install unrar
+import io
+import uuid
 
+#sudo apt install unrar
+def download_button(object_to_download, download_filename, button_text, pickle_it=False):
+    """
+    Generates a link to download the given object_to_download.
+    Params:
+    ------
+    object_to_download:  The object to be downloaded.
+    download_filename (str): filename and extension of file. e.g. mydata.csv,
+    some_txt_output.txt download_link_text (str): Text to display for download
+    link.
+    button_text (str): Text to display on download button (e.g. 'click here to download file')
+    pickle_it (bool): If True, pickle file.
+    Returns:
+    -------
+    (str): the anchor tag to download object_to_download
+    Examples:
+    --------
+    download_link(your_df, 'YOUR_DF.csv', 'Click to download data!')
+    download_link(your_str, 'YOUR_STRING.txt', 'Click to download text!')
+    """
+    if pickle_it:
+        try:
+            object_to_download = pickle.dumps(object_to_download)
+        except pickle.PicklingError as e:
+            st.write(e)
+            return None
+    else:
+        if isinstance(object_to_download, bytes):
+            pass
+        elif isinstance(object_to_download, pd.DataFrame):
+            object_to_download = object_to_download.to_csv(index=False)
+        # Try JSON encode for everything else
+        else:
+            object_to_download = json.dumps(object_to_download)
+    try:
+        # some strings <-> bytes conversions necessary here
+        b64 = base64.b64encode(object_to_download.encode()).decode()
+    except AttributeError as e:
+        b64 = base64.b64encode(object_to_download).decode()
+    button_uuid = str(uuid.uuid4()).replace('-', '')
+    button_id = re.sub('\d+', '', button_uuid)
+    custom_css = f""" 
+        <style>
+            #{button_id} {{
+                background-color: rgb(255, 165, 0);
+                color: rgb(0,0,0);
+                padding: 0.25em 0.38em;
+                position: relative;
+                text-decoration: none;
+                border-radius: 4px;
+                border-width: 1px;
+                border-style: solid;
+                border-color: rgb(255, 165, 0);
+                border-image: initial;
+            }} 
+            #{button_id}:hover {{
+                border-color: rgb(246, 51, 102);
+                color: rgb(246, 51, 102);
+            }}
+            #{button_id}:active {{
+                box-shadow: none;
+                background-color: rgb(246, 51, 102);
+                color: white;
+                }}
+        </style> """
+    dl_link = custom_css + f'<a download="{download_filename}" id="{button_id}" href="data:file/txt;base64,{b64}">{button_text}</a><br></br>'
+    return dl_link
 def extract_tar(data, output_dir):
     with tarfile.open(fileobj=BytesIO(data), mode='r') as tar:
         tar.extractall(output_dir)
@@ -752,7 +819,7 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
     with tab4:
       st.subheader('1. Select Table/View ')
       option = st.multiselect(':orange[Type or select for searching]',dict_table_result.keys(), placeholder = 'Select table/view')
-      #list_data_type = option
+      list_data_type = option
       if option:
         for option in option:
           print('[TAB4] You selected: [%s] with path [%s]'%(option, dict_table_result.get(option).get('dir')))
@@ -773,8 +840,9 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
                 container.code(yaml.dump(dict_temp2_tab4, indent = 4), language = 'yaml', line_numbers= True)
       ########################## TAB4 Test table/view witch offline data ####################################################
       st.subheader('2. Import your XML offline data')
-      uploaded_file = st.file_uploader("Choose a file", type=["tar", "gz", "zip", "rar"])
-      submitted = st.button(label= "Run")
+      with st.container(border=True):
+        uploaded_file = st.file_uploader("Choose a file", type=["tar", "gz", "zip", "rar"])
+      submitted = st.button(label= "RUN")
       if uploaded_file is not None and submitted:
         with st.spinner('Wait for it...'):
           time.sleep(1)
@@ -805,7 +873,8 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
                       dir_xml= output_directory
             else:
                 print(f"{output_directory} not directory")
-            print("[TAB3] Call GET_PYEZ_TABLEVIEW")
+            #print("[TAB4] Call GET_PYEZ_TABLEVIEW")
+            excel_file_path= os.path.join(dir_xml, "output_excel.xlsx") 
             for filename in os.listdir(dir_xml):
                 if os.path.isfile(os.path.join(dir_xml, filename)):
                   with open(os.path.join(dir_xml, filename), 'r') as file:
@@ -836,11 +905,10 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
                       with open(os.path.join(dir_xml, f"{hostname}.xml"), 'r+') as file:
                           content = file.read()
                           file.seek(0)
-                          file.write(f"<div>\n{content}</div>\n")   
-            excel_file_path= os.path.join(dir_xml, "output_excel.xlsx")  
+                          file.write(f"<div>\n{content}</div>\n")     
             with pd.ExcelWriter(excel_file_path) as writer:
               st.session_state.status = True         
-              for data_type in option:
+              for data_type in list_data_type:
                 try:
                   final_result=pd.DataFrame()
                   tableview_file= dict_table_result.get(data_type).get('dir')
@@ -858,10 +926,14 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
                 except Exception as e:
                   logging.error(e)
                 final_result.to_excel(writer, sheet_name=data_type, index=False)
-                st.write(f"<p style='color:green;'>Output for <strong>{data_type}</strong>:</p>", unsafe_allow_html=True)
+                st.write(f"<p style='color:orange;'>Output for <strong>{data_type}</strong>:</p>", unsafe_allow_html=True)
                 st.dataframe(final_result)
               st.toast(':blue[Get successfully]')
-              st.download_button('Export All',open(excel_file_path,'rb').read(), "output_excel.xlsx",mime="application/octet-stream",disabled= st.session_state.status)
+              st.session_state.status = False
+            with open(excel_file_path, 'rb') as f:
+                s = f.read()
+            download_button_str = download_button(s, "output.xlsx", 'Download all xlsx')
+            st.markdown(download_button_str, unsafe_allow_html=True)
           except Exception as e:
               st.error(
               """

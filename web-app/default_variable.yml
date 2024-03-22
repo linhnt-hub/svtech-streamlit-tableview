@@ -9,7 +9,7 @@ config_git:
 path_junos_tableview:
   path_table_view: /opt/SVTECH-Junos-Automation/Junos_tableview
   path_module_utils: /opt/SVTECH-Junos-Automation/module_utils
-  dir_output: /home/juniper/svtech-streamlit-tableview/web_app/tbv_offline_data
+  dir_output: /home/juniper/svtech-streamlit-tableview/web-app/tbv_offline_data
 config_streamlit_ace:
   language: yaml
   theme: monokai
