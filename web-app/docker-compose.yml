@@ -2,13 +2,13 @@ version: '3'
 services: 
   streamlit_apps:
     container_name: streamlit_application
-    image: "hiennnnguyen/streamlit_apps:version$VERSION"
+    image: "linhnt47/streamlit_tableview:v1.0"
     ports: 
-      - 80:8501 
+      - 8501:8501 
     restart: always
     environment:
       - TZ=Asia/Ho_Chi_Minh
-      - DB_DIR=$DB_DIR
-      - VERSION=$VERSION
+      - DB_DIR=/SVTECH-Junos-Automation/Python-Development/streamlit_apps/optic_data
+      - VAR_PATH=/root/default_variable.yml
     volumes:
-      - C:\Users\Public\collect_data:$DB_DIR
+      - /var/tmp:/SVTECH-Junos-Automation/Python-Development/streamlit_apps/optic_data
