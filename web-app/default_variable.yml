@@ -1,3 +1,6 @@
+## command run:
+# docker buildx build --build-arg git_token=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 --build-arg user_email=thihuongphung09@gmail.com --build-arg user_name=huongpt11 -t huong_test:v1 . --no-cache
+# docker compose up -d
 config_git:
   repo_path: /opt/DevOps
   remote: origin

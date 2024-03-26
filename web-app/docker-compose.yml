@@ -3,17 +3,12 @@ version: '3'
 services: 
   streamlit_apps:
     container_name: streamlit_application
-<<<<<<< HEAD
     image: "huong_test:v1"
-=======
-    image: "hiennnnguyen/streamlit_apps:version$VERSION"
->>>>>>> parent of e3c19a0 (fix: Update dockerfile, docker-compose)
     ports: 
-      - 80:8501 
+      - 8501:8501 
     restart: always
     environment:
       - TZ=Asia/Ho_Chi_Minh
-<<<<<<< HEAD
       - VAR_DIR=/SVTECH-Junos-Automation/Python-Development/streamlit_apps
       - VAR_PATH=/SVTECH-Junos-Automation/Python-Development/streamlit_apps/default_variable.yml
     volumes:
@@ -21,9 +16,3 @@ services:
 ### monut VAR_DIR in container to local host: /var/lib/docker/volumes/streamlit_apps_default_variable/_data
 volumes:
   default_variable:
-=======
-      - DB_DIR=$DB_DIR
-      - VERSION=$VERSION
-    volumes:
-      - C:\Users\Public\collect_data:$DB_DIR
->>>>>>> parent of e3c19a0 (fix: Update dockerfile, docker-compose)
