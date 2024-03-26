@@ -1,14 +1,29 @@
+# docker buildx build --build-arg git_token=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 --build-arg user_email=thihuongphung09@gmail.com --build-arg user_name=huongpt11 -t huong_test:v1 . --no-cache
 version: '3'
 services: 
   streamlit_apps:
     container_name: streamlit_application
-    image: "linhnt47/streamlit_tableview:v1.0"
+<<<<<<< HEAD
+    image: "huong_test:v1"
+=======
+    image: "hiennnnguyen/streamlit_apps:version$VERSION"
+>>>>>>> parent of e3c19a0 (fix: Update dockerfile, docker-compose)
     ports: 
-      - 8501:8501 
+      - 80:8501 
     restart: always
     environment:
       - TZ=Asia/Ho_Chi_Minh
-      - DB_DIR=/SVTECH-Junos-Automation/Python-Development/streamlit_apps/optic_data
-      - VAR_PATH=/root/default_variable.yml
+<<<<<<< HEAD
+      - VAR_DIR=/SVTECH-Junos-Automation/Python-Development/streamlit_apps
+      - VAR_PATH=/SVTECH-Junos-Automation/Python-Development/streamlit_apps/default_variable.yml
     volumes:
-      - /var/tmp:/SVTECH-Junos-Automation/Python-Development/streamlit_apps/optic_data
+      - default_variable:/SVTECH-Junos-Automation/Python-Development/streamlit_apps
+### monut VAR_DIR in container to local host: /var/lib/docker/volumes/streamlit_apps_default_variable/_data
+volumes:
+  default_variable:
+=======
+      - DB_DIR=$DB_DIR
+      - VERSION=$VERSION
+    volumes:
+      - C:\Users\Public\collect_data:$DB_DIR
+>>>>>>> parent of e3c19a0 (fix: Update dockerfile, docker-compose)

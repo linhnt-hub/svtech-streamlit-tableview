@@ -4,6 +4,7 @@ import pandas as pd # Data Frame
 import numpy as np
 import json # Json format
 import os, sys, logging
+sys.path.append('../')
 from streamlit_pyez_utilities import * #Lib for stdout,stderr, gitcommit, gitpr
 from pathlib import Path 
 import time # Time
@@ -30,7 +31,7 @@ import io
 import uuid
 
 #sudo apt install unrar
-def download_file_button(object_to_download, download_filename, button_text, pickle_it=False):
+def download_button(object_to_download, download_filename, button_text, pickle_it=False):
     """
     Generates a link to download the given object_to_download.
     Params:
@@ -121,6 +122,13 @@ def evaluate_xpath(xml_content, xpath_expression):
         return result
     except etree.XPathError as e:
         return f"XPathError: {e}"
+def download_file(filepath, filename):
+    with open(filepath, "rb") as f:
+        data = f.read()
+        print(111,data)
+    b64 = base64.b64encode(data).decode()
+    href = f'<a href="data:application/octet-stream;base64,{b64}" download="{filename}">Click here to download {filename}</a>'
+    return href
 def check_xpath_syntax(xpath_expression):
     try:
         # Attempt to create an XPath object with the given expression
@@ -925,7 +933,7 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
               st.session_state.status = False
             with open(excel_file_path, 'rb') as f:
                 s = f.read()
-            download_button_str = download_file_button(s, "output.xlsx", 'Download all xlsx')
+            download_button_str = download_button(s, "output.xlsx", 'Download all xlsx')
             st.markdown(download_button_str, unsafe_allow_html=True)
           except Exception as e:
               st.error(

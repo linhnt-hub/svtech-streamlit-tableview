@@ -7,4 +7,10 @@ pandas==2.1.1
 pyvis==0.3.2
 streamlit==1.26.0
 streamlit_option_menu==0.3.6
-streamlit-ace=0.1.1
+streamlit-ace==0.1.1
+nt-lib==0.1.4
+PyYAML==6.0.1
+PyGithub==2.1.1
+requests==2.27.1
+yamllint==1.33.0
+rarfile==4.1
