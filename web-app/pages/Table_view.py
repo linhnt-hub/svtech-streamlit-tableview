@@ -6,6 +6,8 @@ import json # Json format
 import os, sys, logging
 sys.path.append('../')
 from streamlit_pyez_utilities import * #Lib for stdout,stderr, gitcommit, gitpr
+sys.path.append('../device_config_processing/classes')
+from textprocessing import *
 from pathlib import Path 
 import time # Time
 from datetime import datetime, timezone, timedelta # Datetime
@@ -31,7 +33,7 @@ import io
 import uuid
 
 #sudo apt install unrar
-def download_button(object_to_download, download_filename, button_text, pickle_it=False):
+def download_file_button(object_to_download, download_filename, button_text, pickle_it=False):
     """
     Generates a link to download the given object_to_download.
     Params:
@@ -59,30 +61,31 @@ def download_button(object_to_download, download_filename, button_text, pickle_i
     else:
         if isinstance(object_to_download, bytes):
             pass
+
         elif isinstance(object_to_download, pd.DataFrame):
             object_to_download = object_to_download.to_csv(index=False)
-        # Try JSON encode for everything else
         else:
             object_to_download = json.dumps(object_to_download)
     try:
-        # some strings <-> bytes conversions necessary here
         b64 = base64.b64encode(object_to_download.encode()).decode()
     except AttributeError as e:
         b64 = base64.b64encode(object_to_download).decode()
+
     button_uuid = str(uuid.uuid4()).replace('-', '')
     button_id = re.sub('\d+', '', button_uuid)
+
     custom_css = f""" 
         <style>
             #{button_id} {{
-                background-color: rgb(255, 165, 0);
-                color: rgb(0,0,0);
+                background-color: rgb(255, 255, 255);
+                color: rgb(38, 39, 48);
                 padding: 0.25em 0.38em;
                 position: relative;
                 text-decoration: none;
                 border-radius: 4px;
                 border-width: 1px;
                 border-style: solid;
-                border-color: rgb(255, 165, 0);
+                border-color: rgb(230, 234, 241);
                 border-image: initial;
             }} 
             #{button_id}:hover {{
@@ -95,7 +98,9 @@ def download_button(object_to_download, download_filename, button_text, pickle_i
                 color: white;
                 }}
         </style> """
+
     dl_link = custom_css + f'<a download="{download_filename}" id="{button_id}" href="data:file/txt;base64,{b64}">{button_text}</a><br></br>'
+
     return dl_link
 def extract_tar(data, output_dir):
     with tarfile.open(fileobj=BytesIO(data), mode='r') as tar:
@@ -112,49 +117,7 @@ def extract_zip(data, output_dir):
 def extract_rar(data, output_dir):
     with rarfile.RarFile(BytesIO(data), 'r') as rar:
         rar.extractall(output_dir)
-def evaluate_xpath(xml_content, xpath_expression):
-    try:
-        # Parse the XML content
-        root = etree.fromstring(xml_content)
-        # Use XPath to evaluate the expression
-        result = root.xpath(xpath_expression)
-
-        return result
-    except etree.XPathError as e:
-        return f"XPathError: {e}"
-def download_file(filepath, filename):
-    with open(filepath, "rb") as f:
-        data = f.read()
-        print(111,data)
-    b64 = base64.b64encode(data).decode()
-    href = f'<a href="data:application/octet-stream;base64,{b64}" download="{filename}">Click here to download {filename}</a>'
-    return href
-def check_xpath_syntax(xpath_expression):
-    try:
-        # Attempt to create an XPath object with the given expression
-        etree.XPath(xpath_expression)
-        return True, None
-    except etree.XPathSyntaxError as e:
-        return False, str(e)
-def get_xml_data(device_host, username, password, command):
-    try:
-        # Connect to the Junos device
-        dev = Device(host=device_host, user=username, password=password)
-        dev.open()
-
-        # Execute the command and get the XML response
-        response_xml = dev.cli(command, format='xml')
-
-        # Parse the XML response
-        root = etree.fromstring(response_xml)
-
-        return root
-    except Exception as e:
-        return f"Error: {e}"
-
-    finally:
-        # Close the connection
-        dev.close()
+        
 ############### Page style ##################
 st.set_page_config(layout="wide", page_icon="✨")
 font_css = """
@@ -172,6 +135,7 @@ from PYEZ_BASE_FUNC import PYEZ_TABLEVIEW_TO_DATAFRAME
 from PYEZ_BASE_FUNC import GET_PYEZ_TABLEVIEW_RAW
 from PYEZ_BASE_FUNC import GET_PYEZ_TABLEVIEW
 from PYEZ_BASE_FUNC import GET_TABLEVIEW_CATALOGUE
+from PYEZ_BASE_FUNC import IMPORT_JUNOS_TABLE_VIEW
 from BASE_FUNC import LOGGER_INIT
 
 ## EXPLAIN: setting shell_output = False will create a default log Streamhandler, which by default send all   all Python log to stderr
@@ -319,7 +283,7 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
             height= 300)
       with st.container(border = True):
         if op:  # Check state of selecting
-          if (add_table.find(':') != -1) and add_table.split(':')[0].endswith("Table") and (add_table.find("view") != -1):
+          if (add_table.find(':') != -1) and add_table.split(':')[0].endswith("Table") and (add_table.find("view") != -1) and (len(add_table.split(':')[0]) <= 31):
             print("[TAB2] Table must end with Table, must have view:, must have :, [PASS]")
             if list_table_result.count(add_table.split(':')[0]) == 0: # Check duplicate table Name
               print("[TAB2] Don't duplicate table name [PASS]")
@@ -403,6 +367,7 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
                 :orange[Table] 
                 :red[ content.]
                 \n
+                :grey[*Length name table < 31 characters*]\n
                 :grey[*Note: table must have suffix Table*]\n
                 :grey[*Note: table must have \"view:\"*]
                 """)
@@ -840,10 +805,9 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
                 dict_temp2_tab4[dict_table_result.get(option).get('content').get('view')] = dict_view_result.get(dict_table_result.get(option).get('content').get('view')).get('content')
                 container.code(yaml.dump(dict_temp2_tab4, indent = 4), language = 'yaml', line_numbers= True)
       ########################## TAB4 Test table/view witch offline data ####################################################
-      st.subheader('2. Import your XML offline data')
-      with st.container(border=True):
-        uploaded_file = st.file_uploader("Choose a file", type=["tar", "gz", "zip", "rar"])
-      submitted = st.button(label= "RUN")
+      st.subheader('2. Try your edited table/view with your XML file')
+      uploaded_file = st.file_uploader("Choose a file", type=["tar", "gz", "zip", "rar"])
+      submitted = st.button(label= "Run")
       if uploaded_file is not None and submitted:
         with st.spinner('Wait for it...'):
           time.sleep(1)
@@ -875,40 +839,26 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
             else:
                 print(f"{output_directory} not directory")
             #print("[TAB4] Call GET_PYEZ_TABLEVIEW")
-            excel_file_path= os.path.join(dir_xml, "output_excel.xlsx") 
             for filename in os.listdir(dir_xml):
                 if os.path.isfile(os.path.join(dir_xml, filename)):
-                  with open(os.path.join(dir_xml, filename), 'r') as file:
-                      content = file.read()
-                      # get hostname device in file log 
-                      hostname = (re.search(r'@(.+?)(?=>)', content))
-                      if hostname:
-                          hostname = hostname.group(1)
-                      else:
-                        print(f"Hostname is not exist in file {file_name}")
-                      # Extract content between rpc-reply tags
-                      rpc_reply_content = re.findall(r'<rpc-reply(.*?)</rpc-reply>', content, re.DOTALL)
-
-                      if rpc_reply_content:
-                        with open(os.path.join(dir_xml, f"{hostname}.xml"), 'a') as outfile:
-                            for rpc_reply_content  in rpc_reply_content:
-                                outfile.write("<rpc-reply ")
-                                outfile.write(rpc_reply_content.strip())
-                                outfile.write('\n</rpc-reply>\n')
-                      # Remove show commands and cli from the XML file
-                      if os.path.exists(os.path.join(dir_xml, f"{hostname}.xml")):
-                          with open(os.path.join(dir_xml, f"{hostname}.xml"), 'r+') as file:
-                              content = file.read()
-                              content = re.sub(r'^\s*<show.*?/>', '', content, flags=re.MULTILINE)
-                              file.seek(0)
-                              file.write(content)
-                              file.truncate()
+                    cmd_process = TextProcessing(os.path.join(dir_xml, filename),"juniper_command")
+                    cmd_process.file_to_content()
+                    hostname = cmd_process.extract_hostname_from_content().pop()
+                    cmd_list = cmd_process.extract_cmd_list_from_content()
+                    block_xml = cmd_process.extract_text_command_pair()
+                    rpc_reply_content = block_xml[0]['output_text']
+                    if rpc_reply_content:
+                      with open(os.path.join(dir_xml, f"{hostname}.xml"), 'a') as outfile:
+                          for rpc_reply_content  in rpc_reply_content:
+                              outfile.write("<rpc-reply ")
+                              outfile.write(rpc_reply_content.strip())
+                              outfile.write('\n</rpc-reply>\n')
                       with open(os.path.join(dir_xml, f"{hostname}.xml"), 'r+') as file:
                           content = file.read()
                           file.seek(0)
-                          file.write(f"<div>\n{content}</div>\n")     
+                          file.write(f"<div>\n{content}</div>\n")   
+            excel_file_path= os.path.join(dir_xml, "output_excel.xlsx")  
             with pd.ExcelWriter(excel_file_path) as writer:
-              st.session_state.status = True         
               for data_type in list_data_type:
                 try:
                   final_result=pd.DataFrame()
@@ -927,20 +877,19 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
                 except Exception as e:
                   logging.error(e)
                 final_result.to_excel(writer, sheet_name=data_type, index=False)
-                st.write(f"<p style='color:orange;'>Output for <strong>{data_type}</strong>:</p>", unsafe_allow_html=True)
+                st.write(f"<p style='color:green;'>Output for <strong>{data_type}</strong>:</p>", unsafe_allow_html=True)
                 st.dataframe(final_result)
               st.toast(':blue[Get successfully]')
-              st.session_state.status = False
             with open(excel_file_path, 'rb') as f:
                 s = f.read()
-            download_button_str = download_button(s, "output.xlsx", 'Download all xlsx')
+            download_button_str = download_file_button(s, "output.xlsx", 'Download all xlsx')
             st.markdown(download_button_str, unsafe_allow_html=True)
           except Exception as e:
               st.error(
               """
               - Can't get data by table/view. Review table/view
               """)
-              logging.error ( "Can't get data by table/view. Review table/view [ {} ]".format(e))
+              logging.error ( "Can't get data by table/view. Review table/view [ {} ]".format(e))      
 
     ###################### TAB5 ##########################################################################
     with tab5:
@@ -957,46 +906,36 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
             with st.spinner('Wait for it...'):
               time.sleep(1)
               try:
-                with Device(host=router, user= user, password= passwd, normalize=True) as dev:
-                  try:
-                    rpc_cmd = dev.display_xml_rpc(command, format= 'xml').tag.replace("-", "_")
-                    exec('a1=dev.rpc.%s(normalize=True)'%rpc_cmd)
-                    st.code(dev.display_xml_rpc(command, format= 'text'), language='yaml')
-                    col1, col2 = st.columns([1,9])
-                    with col1:
-                      st.code('RPC >>>')
-                    with col2:
-                      st.code(rpc_cmd)
-                    is_valid, error_message = check_xpath_syntax(xpath)
-                    if is_valid:
-                      st.info("Result:")
-                      print('[TAB4] Element of RPC XPath %s'%a1.xpath(xpath))
-                      for e in a1.xpath(xpath):
-                        xml_minidom = xml.dom.minidom.parseString(etree.tostring(e)) # Func display xml like pretty
-                        xml_pretty = xml_minidom.toprettyxml()
-                        st.code(xml_pretty, language= 'xml')
-                      st.toast(':blue[Done]')
-                    else:
-                      st.error(f"Syntax XPath is invalid. Error message: [{error_message}]")
-                    dev.close()
-                  except Exception as e:
-                      print('[769][TAB4] Error exception is [%s]'%e)
-                      st.error(
-                      """
-                      No command entered or xml rpc equivalent of this command is not available.
-                      """)
+                #rpc_cmd = dev.display_xml_rpc(command, format= 'xml').tag.replace("-", "_")
+                #exec('xml_obj=dev.rpc.%s(normalize=True)'%rpc_cmd)
+                rpc_name , xml_obj = get_xml_obj(host = router, username= user, password=passwd, command= command)
+                col1, col2 = st.columns([1,9])
+                with col1:
+                  st.code('RPC >>>')
+                with col2:
+                  st.code(rpc_name)
+                is_valid, error_message = check_xpath_syntax(xpath)
+                if is_valid:
+                  st.info("Result:")
+                  print('[TAB5] Element of RPC XPath %s'%xml_obj.xpath(xpath))
+                  for e in xml_obj.xpath(xpath):
+                    xml_pretty = convert_xml_pretty(e)
+                    st.code(xml_pretty, language= 'xml')
+                  st.toast(':blue[Done]')
+                else:
+                  st.error(f"Syntax XPath is invalid. Error message: [{error_message}]")
               except Exception as e:
-                print('[TAB5] Error exception is [%s]'%e)
-                st.error(
+                  print('[TAB5] Error exception is [%s]'%e)
+                  st.error(
                   """
-                  - Check Your Username/Password\n
-                  - Check connection to Router
-                  """
-                  )
+                  Check connection/username/password\n
+                  Check command entered\n
+                  Or xml rpc equivalent of this command is not available.
+                  """)
       with st.expander(":blue[XPath Tester - Evaluator]"):
           st.subheader('Allows you to test your XPath expressions/queries against a XML.')
           st.write(':orange[*Step 1: Copy-paste your XML here*] ')
-          example_xml= st_ace(
+          input_xml= st_ace(
             language= 'xml', 
             theme= config.get('config_streamlit_ace', {}).get('theme'), 
             show_gutter= config.get('config_streamlit_ace', {}).get('show_gutter'), 
@@ -1006,7 +945,8 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
             height= 300)
           st.write(':orange[*Step 2: XPath expression*] ')
           example_xpath= st.text_input(':orange[Step 2: XPath expression] ', label_visibility="hidden")
-          if example_xml:
+          if input_xml:
+            example_xml = remove_xml_namespaces(input_xml)
             if example_xpath:
               is_valid, error_message = check_xpath_syntax(example_xpath)
               if is_valid:
@@ -1015,9 +955,8 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
                     result_xml = evaluate_xpath(example_xml, example_xpath)
                     print('[TAB5] Element of XPath Tester %s'%result_xml)
                     for e in result_xml:
-                      xml_minidom1 = xml.dom.minidom.parseString(etree.tostring(e))
-                      xml_pretty1 = xml_minidom1.toprettyxml()
-                      st.code(xml_pretty1, language= 'xml')
+                      xml_pretty = convert_xml_pretty(e)
+                      st.code(xml_pretty, language= 'xml')
                   except Exception as e:
                     st.error("XML syntax error %s"%e)
               else:
