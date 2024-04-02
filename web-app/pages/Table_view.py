@@ -137,7 +137,7 @@ from PYEZ_BASE_FUNC import GET_PYEZ_TABLEVIEW
 from PYEZ_BASE_FUNC import GET_TABLEVIEW_CATALOGUE
 from PYEZ_BASE_FUNC import IMPORT_JUNOS_TABLE_VIEW
 from BASE_FUNC import LOGGER_INIT
-
+from NETWORK_FUNC import *
 ## EXPLAIN: setting shell_output = False will create a default log Streamhandler, which by default send all   all Python log to stderr
 ## then we send all console stdout to TerminalOutput tab
 ## all stderr data (which include formatted log) to the LogData tab
@@ -148,6 +148,7 @@ list_table_result=[] # Save list tables
 list_view_result=[] # Save list views
 dict_table_result={} # Save dict tables
 dict_view_result={}  # Save dict views
+yamllint_conf= config.get('yamllint', {}).get('config')
 
 try:
   tableview_cat= GET_TABLEVIEW_CATALOGUE(config.get('path_junos_tableview', {}).get('path_table_view'))
@@ -201,6 +202,44 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
         with col4:
           # Export button
           st.download_button('Export', "---"+"\n"+ yaml.dump(dict_export_file, indent = 4, encoding= None), key= '1')
+      if options:
+        with st.expander(":green[Expand for getting Data from Router]"):
+          with st.form("form10"):
+            user, passwd, router = component_login()
+            tab1_list_host= GET_ALIVE_HOST(router)
+            print("[TAB1] List host %s"%tab1_list_host)
+            submitted = st.form_submit_button(label= "Run")
+            if submitted:
+              with st.spinner('Wait for it...'):
+                try:
+                  for ip in tab1_list_host:
+                    with Device(host=ip, user= user, password= passwd) as dev:
+                      print('[TAB1] Get multiple table/view data')
+                      try:
+                        for option in options:
+                          table_object = GET_PYEZ_TABLEVIEW(dev= dev, data_type = option[:-5])
+                          table_object.get()
+                          dataframe= PYEZ_TABLEVIEW_TO_DATAFRAME(dev= dev, tableview_obj= table_object)
+                          with st.container(border= True):                 
+                            st.success('''
+                            Get table **%s** successfully from **%s** \n
+                            '''%(option,ip))
+                            st.dataframe(dataframe)
+                        dev.close()
+                      except Exception as e:
+                          st.error(
+                          """
+                          - Can't get data by table/view. Review table/view
+                          """)
+                          print("[TAB1] Check exception %s"%e)
+                except Exception as e:
+                  st.error(
+                    """
+                    - Check Your Username/Password\n
+                    - Check connection to Router (Or no router available)
+                    """
+                    )
+                  print('[TAB1] Check exception %s'%e)
       #############Search table by key###########################
       st.subheader('2. Get List Table/View By Keywork')
       option_fil=[]
@@ -293,7 +332,7 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
                   print("[TAB2] Don't duplicate view name [PASS]")
                   if add_view.split(':')[0] == add_table.split(':')[-1].strip():  # Check table-view match with view, Need strip for remove space
                     print("[TAB2] Match Table/view and View [PASS]")
-                    conf_ymllint = YamlLintConfig('extends: default') ### Modify file /home/juniper/.local/lib/python3.10/site-packages/yamllint/conf/relaxed.yaml
+                    conf_ymllint = YamlLintConfig('extends: %s'%yamllint_conf) ### Modify file /home/juniper/.local/lib/python3.10/site-packages/yamllint/conf/relaxed.yaml
                     # Or /usr/local/lib/python3.10/dist-packages/yamllint/conf
                     error_table = linter.run(add_table , conf_ymllint)
                     error_view = linter.run(add_view , conf_ymllint)
@@ -388,42 +427,43 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
       print('[TAB2] Test table/view with router')
       #############################TAB2 Form test table/view #####################################
       with st.form("form1"):
-        user= st.text_input(':orange[Your username:] ', placeholder = 'Typing user')
-        passwd= st.text_input(':orange[Your password:] ', type= 'password', placeholder = 'Typing password')
-        router= st.text_input(':orange[Your router IP:] ', placeholder = 'Typing IP\'s device')
+        user, passwd, router = component_login()
+        tab2_list_host= GET_ALIVE_HOST(router)
         submitted = st.form_submit_button(label= "Run", disabled= st.session_state.test_table)
         if submitted:
           with st.spinner('Wait for it...'):
-            time.sleep(1)
+            # time.sleep(1)
             try:
-              with Device(host=router, user= user, password= passwd) as dev:
-                print('[TAB2] Are we connected?', dev.connected)
-                try:
-                    myYAML="".join([add_table,"\n",add_view])
-                    globals().update(FactoryLoader().load(yaml.load(myYAML, Loader=yaml.FullLoader)))
-                    exec('table_object = %s(dev)'%add_table.split(':')[0]) 
-                    table_object.get()
-                    dataframe= PYEZ_TABLEVIEW_TO_DATAFRAME(dev= dev, tableview_obj= table_object)
-                    st.dataframe(dataframe)                 
-                    st.success('''
-                    Get successfully\n
-                    Use button below for creating and commit
-                    ''')
-                    print('[TAB2] Get data successfully. Use button below for creating and commit')
-                    dev.close()
-                    st.session_state.commit = False
-                except Exception as e:
-                    st.error(
-                    """
-                    - Can't get data by table/view. Review table/view
-                    """)
-                    print("[TAB2] Check exception %s"%e)
-                    st.session_state.commit = True
+              for ip in tab2_list_host:
+                with Device(host=ip, user= user, password= passwd) as dev:
+                  print('[TAB2] Are we connected?', dev.connected)
+                  try:
+                      myYAML="".join([add_table,"\n",add_view])
+                      globals().update(FactoryLoader().load(yaml.load(myYAML, Loader=yaml.FullLoader)))
+                      exec('table_object = %s(dev)'%add_table.split(':')[0]) 
+                      table_object.get()
+                      dataframe= PYEZ_TABLEVIEW_TO_DATAFRAME(dev= dev, tableview_obj= table_object)
+                      with st.expander(":blue[Data from router %s :]"%ip):
+                        st.dataframe(dataframe)                 
+                        st.success('''
+                        Get successfully\n
+                        Use button below for creating and commit
+                        ''')
+                      print('[TAB2] Get data successfully. Use button below for creating and commit')
+                      dev.close()
+                      st.session_state.commit = False
+                  except Exception as e:
+                      st.error(
+                      """
+                      - Can't get data by table/view. Review table/view
+                      """)
+                      print("[TAB2] Check exception %s"%e)
+                      st.session_state.commit = True
             except Exception as e:
               st.error(
                 """
                 - Check Your Username/Password\n
-                - Check connection to Router
+                - Check connection to Router (Or no router available)
                 """
                 )
               print('[TAB2] Check exception %s'%e)
@@ -606,7 +646,7 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
             st.write("*Use beside button for check syntax/delete your table/view ...*")
           with col4:
             if st.button('Check syntax', type= 'primary'):
-              conf_ymllint_tab3 = YamlLintConfig('extends: default')
+              conf_ymllint_tab3 = YamlLintConfig('extends: %s'%yamllint_conf)
               error_table_tab3 = linter.run(edit_table , conf_ymllint_tab3)
               error_view_tab3 = linter.run(edit_view , conf_ymllint_tab3)
               error_args_tab3 = linter.run(edit_table_args , conf_ymllint_tab3)
@@ -669,42 +709,43 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
       ########################## TAB3 Test table/view ####################################################
       st.subheader('2. Try your edited table/view with your router')
       with st.form("form3"):
-        user= st.text_input(':orange[Your username:] ', placeholder = 'Typing user')
-        passwd= st.text_input(':orange[Your password:] ', type= 'password', placeholder = 'Typing password')
-        router= st.text_input(':orange[Your router IP:] ', placeholder = 'Typing IP\'s device')
+        user, passwd, router = component_login()
+        tab3_list_host= GET_ALIVE_HOST(router)
+        print(tab3_list_host)
         submitted = st.form_submit_button(label= "Run", disabled= st.session_state.test_table_edit)
         if submitted:
           with st.spinner('Wait for it...'):
-            time.sleep(1)
+            #time.sleep(1)
             args_dict = yaml.safe_load(edit_table_args)
             #print(args_dict)
             try:
-              with Device(host=router, user= user, password= passwd) as dev:
-                try:
-                  print("[TAB3] Call GET_PYEZ_TABLEVIEW")
-                  tv_obj = GET_PYEZ_TABLEVIEW(dev= dev, data_type = edit_table.split(':')[0][:-5], kwargs= args_dict)
-                  tv_obj.get()
-                  print("[TAB3] Call PYEZ_TABLEVIEW_TO_DATAFRAME [%s]"%tv_obj)
-                  dataframe= PYEZ_TABLEVIEW_TO_DATAFRAME(dev= dev, tableview_obj= tv_obj)
-                  st.dataframe(dataframe)
-                  st.toast(':blue[Get successfully]')
-                  st.success('''
-                  Use button below for saving and commit
-                  ''')
-                  dev.close()
-                  st.session_state.commit_edit = False
-                except Exception as e:
-                    st.error(
-                    """
-                    - Can't get data by table/view. Review table/view
-                    """)
-                    logging.error ( "Can't get data by table/view. Review table/view [ {} ]".format(e))
-                    st.session_state.commit_edit = True
+              for ip in tab3_list_host:
+                with Device(host=ip, user= user, password= passwd) as dev:
+                  try:
+                    print("[TAB3] Call GET_PYEZ_TABLEVIEW")
+                    tv_obj = GET_PYEZ_TABLEVIEW(dev= dev, data_type = edit_table.split(':')[0][:-5], kwargs= args_dict)
+                    tv_obj.get()
+                    print("[TAB3] Call PYEZ_TABLEVIEW_TO_DATAFRAME [%s]"%tv_obj)
+                    dataframe= PYEZ_TABLEVIEW_TO_DATAFRAME(dev= dev, tableview_obj= tv_obj)
+                    with st.expander(":green[Data from host %s:]"%ip):
+                      st.dataframe(dataframe)
+                      dev.close()
+                  except Exception as e:
+                      st.error(
+                      """
+                      - Can't get data by table/view. Review table/view
+                      """)
+                      logging.error ( "Can't get data by table/view. Review table/view [ {} ]".format(e))
+                      st.session_state.commit_edit = True
+              st.toast(':blue[Get successfully]')
+              st.success('''
+              Use button below for saving and commit
+              ''')
+              st.session_state.commit_edit = False
             except Exception as e:
               st.error(
                 """
                 - Check Your Username/Password\n
-                - Check connection to Router
                 """
                 )
               logging.error ( "Check Your Username/Password/Connection [ {} ]".format(e))
@@ -810,7 +851,7 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
       submitted = st.button(label= "Run")
       if uploaded_file is not None and submitted:
         with st.spinner('Wait for it...'):
-          time.sleep(1)
+          # time.sleep(1)
           file_contents = uploaded_file.read()
           file_name = os.path.splitext(uploaded_file.name)[0]
           file_format = uploaded_file.name.split('.')[-1]
@@ -893,37 +934,38 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
 
     ###################### TAB5 ##########################################################################
     with tab5:
-      with st.expander(":blue[See when you want to dicovery RPC with your router and evaluate xpath]"):
+      with st.container(border=True):
+      # with st.expander(":blue[See when you want to dicovery RPC with your router and evaluate xpath]"):
         st.subheader('Discovery RPC with your router and evaluate xpath')
         with st.form("form6"):
-          user= st.text_input(':orange[Your username:] ', placeholder = 'Typing user')
-          passwd= st.text_input(':orange[Your password:] ', type= 'password', placeholder = 'Typing password')
-          router= st.text_input(':orange[Your router IP:] ', placeholder = 'Typing IP\'s device')
+          user, passwd, router = component_login()
+          tab5_list_host=GET_ALIVE_HOST(router)
           command= st.text_input(':orange[Command need check:] ', placeholder = 'Typing command here')
           xpath= st.text_input(':orange[XPath for expression:] ','*', placeholder = 'Typing xpath here')
           submitted = st.form_submit_button("Check", type= 'primary')
           if submitted:
             with st.spinner('Wait for it...'):
-              time.sleep(1)
+              # time.sleep(1)
               try:
                 #rpc_cmd = dev.display_xml_rpc(command, format= 'xml').tag.replace("-", "_")
                 #exec('xml_obj=dev.rpc.%s(normalize=True)'%rpc_cmd)
-                rpc_name , xml_obj = get_xml_obj(host = router, username= user, password=passwd, command= command)
-                col1, col2 = st.columns([1,9])
-                with col1:
-                  st.code('RPC >>>')
-                with col2:
-                  st.code(rpc_name)
-                is_valid, error_message = check_xpath_syntax(xpath)
-                if is_valid:
-                  st.info("Result:")
-                  print('[TAB5] Element of RPC XPath %s'%xml_obj.xpath(xpath))
-                  for e in xml_obj.xpath(xpath):
-                    xml_pretty = convert_xml_pretty(e)
-                    st.code(xml_pretty, language= 'xml')
-                  st.toast(':blue[Done]')
-                else:
-                  st.error(f"Syntax XPath is invalid. Error message: [{error_message}]")
+                for ip in tab5_list_host:
+                  rpc_name , xml_obj = get_xml_obj(host = ip, username= user, password=passwd, command= command)
+                  col1, col2 = st.columns([1,9])
+                  with col1:
+                    st.code('RPC >>>')
+                  with col2:
+                    st.code(rpc_name)
+                  is_valid, error_message = check_xpath_syntax(xpath)
+                  if is_valid:
+                    with st.expander(":green[Data of router %s:]"%ip):
+                      print('[TAB5] Element of RPC XPath %s'%xml_obj.xpath(xpath))
+                      for e in xml_obj.xpath(xpath):
+                        xml_pretty = convert_xml_pretty(e)
+                        st.code(xml_pretty, language= 'xml')
+                  else:
+                    st.error(f"Syntax XPath is invalid. Error message: [{error_message}]")
+                st.toast(':blue[Done]')
               except Exception as e:
                   print('[TAB5] Error exception is [%s]'%e)
                   st.error(
@@ -950,7 +992,7 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
             if example_xpath:
               is_valid, error_message = check_xpath_syntax(example_xpath)
               if is_valid:
-                  st.write(":blue[Result is :]")
+                  st.write(":blue[Elements is :]")
                   try:
                     result_xml = evaluate_xpath(example_xml, example_xpath)
                     print('[TAB5] Element of XPath Tester %s'%result_xml)
