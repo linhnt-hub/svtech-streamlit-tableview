@@ -225,7 +225,6 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
                             Get table **%s** successfully from **%s** \n
                             '''%(option,ip))
                             st.dataframe(dataframe)
-                        dev.close()
                       except Exception as e:
                           st.error(
                           """
@@ -450,7 +449,6 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
                         Use button below for creating and commit
                         ''')
                       print('[TAB2] Get data successfully. Use button below for creating and commit')
-                      dev.close()
                       st.session_state.commit = False
                   except Exception as e:
                       st.error(
@@ -691,7 +689,7 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
                 st.session_state.test_table_edit = True
                 st.session_state.commit_edit = True
           with col5:
-            if st.button('Delete'):
+            if st.button('Delete', type= 'primary'):
               if edit_table.split(':')[0] == option:
                 if edit_view.split(':')[0] == dict_table_tab3.get(option).get("view"):
                   output.append(":blue[Did you select delete your table/view? Use button below for commit]")
@@ -729,7 +727,6 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
                     dataframe= PYEZ_TABLEVIEW_TO_DATAFRAME(dev= dev, tableview_obj= tv_obj)
                     with st.expander(":green[Data from host %s:]"%ip):
                       st.dataframe(dataframe)
-                      dev.close()
                   except Exception as e:
                       st.error(
                       """
@@ -848,7 +845,7 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
       ########################## TAB4 Test table/view witch offline data ####################################################
       st.subheader('2. Try your edited table/view with your XML file')
       uploaded_file = st.file_uploader("Choose a file", type=["tar", "gz", "zip", "rar"])
-      submitted = st.button(label= "Run")
+      submitted = st.button(label= "Run", type= 'primary')
       if uploaded_file is not None and submitted:
         with st.spinner('Wait for it...'):
           # time.sleep(1)
@@ -939,7 +936,6 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
         st.subheader('Discovery RPC with your router and evaluate xpath')
         with st.form("form6"):
           user, passwd, router = component_login()
-          tab5_list_host=GET_ALIVE_HOST(router)
           command= st.text_input(':orange[Command need check:] ', placeholder = 'Typing command here')
           xpath= st.text_input(':orange[XPath for expression:] ','*', placeholder = 'Typing xpath here')
           submitted = st.form_submit_button("Check", type= 'primary')
@@ -949,8 +945,9 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
               try:
                 #rpc_cmd = dev.display_xml_rpc(command, format= 'xml').tag.replace("-", "_")
                 #exec('xml_obj=dev.rpc.%s(normalize=True)'%rpc_cmd)
-                for ip in tab5_list_host:
-                  rpc_name , xml_obj = get_xml_obj(host = ip, username= user, password=passwd, command= command)
+                rpc_name, dict_xml_obj = get_dict_xml_obj(GET_ALIVE_HOST(router), username= user, password=passwd, command= command)
+                for ip in dict_xml_obj.keys():
+                  #rpc_name , xml_obj = get_xml_obj(host = ip, username= user, password=passwd, command= command)
                   col1, col2 = st.columns([1,9])
                   with col1:
                     st.code('RPC >>>')
@@ -959,8 +956,8 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
                   is_valid, error_message = check_xpath_syntax(xpath)
                   if is_valid:
                     with st.expander(":green[Data of router %s:]"%ip):
-                      print('[TAB5] Element of RPC XPath %s'%xml_obj.xpath(xpath))
-                      for e in xml_obj.xpath(xpath):
+                      print('[TAB5] Element of RPC XPath %s'%dict_xml_obj[ip].xpath(xpath))
+                      for e in dict_xml_obj[ip].xpath(xpath):
                         xml_pretty = convert_xml_pretty(e)
                         st.code(xml_pretty, language= 'xml')
                   else:

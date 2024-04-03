@@ -170,6 +170,8 @@ def gitpr(title, body, repo_path = config.get('config_git', {}).get('repo_path')
         print(f"Failed to fetch pull requests. Status code: {response.status_code}")
         return False
 ############### XML Function######################
+# [linhnt] add March 2024
+
 from lxml import etree
 def evaluate_xpath(xml_content, xpath_expression):
     try:
@@ -188,24 +190,6 @@ def check_xpath_syntax(xpath_expression):
         return True, None
     except etree.XPathSyntaxError as e:
         return False, str(e)
-def get_xml_obj(host, username, password, command):
-  from jnpr.junos import Device
-  try:
-    # Connect to the Junos device
-    dev = Device(host=host, user=username, password=password, normalize=True)
-    dev.open()
-    # Execute the command and get the XML response
-    try:
-      rpc_cmd = dev.display_xml_rpc(command, format= 'xml').tag.replace("-", "_")
-      xml_obj= eval("dev.rpc.{}(normalize=True)".format(rpc_cmd))
-      return rpc_cmd, xml_obj #return rpc_name, xml object
-    except Exception as e:
-      print(f"Can't get rpc, xml value. Check command Error: {e}")
-  except Exception as e:
-    print(f"Check ip/username/password. Error: {e}")
-  finally:
-    # Close the connection
-    dev.close()
 def remove_xml_namespaces(input_xml):
     root = etree.fromstring(input_xml)
     # Iterate through all XML elements
@@ -231,3 +215,72 @@ def convert_xml_pretty(element):
     except Exception as e:
       print(f"Element Parse Fail. Error: {e}")
     return xml_pretty
+
+############### Get XML from host/list_host Function######################
+# [linhnt] add March 2024
+
+def get_xml_obj(host, username, password, command):
+  """ 
+  host: string (ip /32)
+  username: string
+  password: string
+  command: string
+  """
+  from jnpr.junos import Device
+  try:
+    # Connect to the Junos device
+    dev = Device(host=host, user=username, password=password, normalize=True)
+    dev.open()
+    # Execute the command and get the XML response
+    try:
+      rpc_cmd = dev.display_xml_rpc(command, format= 'xml').tag.replace("-", "_")
+      xml_obj= eval("dev.rpc.{}(normalize=True)".format(rpc_cmd))
+      return rpc_cmd, xml_obj #return rpc_name, xml object
+    except Exception as e:
+      print(f"Can't get rpc, xml value. Check command Error: {e}")
+  except Exception as e:
+    print(f"Check ip/username/password. Error: {e}")
+  finally:
+    # Close the connection
+    dev.close()
+
+def get_dict_xml_obj(host, username, password, command):
+  """ 
+  host: list (ip subnet)
+  username: string
+  password: string
+  command: string
+  """
+  from jnpr.junos import Device
+  rpc_cmd=""
+  dict_xml_obj={}
+  if isinstance(host, list):
+    for ip in host:
+      try:
+        # Connect to the Junos device
+        dev = Device(host=ip, user=username, password=password, normalize=True)
+        dev.open()
+        # Execute the command and get the XML response
+        try:
+          rpc_cmd = dev.display_xml_rpc(command, format= 'xml').tag.replace("-", "_")
+          xml_obj= eval("dev.rpc.{}(normalize=True)".format(rpc_cmd))
+          dict_xml_obj.update({ip : xml_obj})
+          # Close the connection
+          dev.close()
+        except Exception as e:
+          print(f"Can't get rpc, xml value. Check command Error: {e}")
+      except Exception as e:
+        print(f"Check ip/username/password. Error: {e}")
+    return rpc_cmd, dict_xml_obj #return rpc_cmd and dict of xml_obj ({ip : xml_obj})
+  else: 
+    print(f"Host isn't list")
+
+############### Streamlit front-end component login######################
+# [linhnt] add March 2024
+
+def component_login():
+    import streamlit as st
+    user= st.text_input(':orange[Your username:] ', placeholder = 'Typing user')
+    passwd= st.text_input(':orange[Your password:] ', type= 'password', placeholder = 'Typing password')
+    ip = st.text_input(':orange[Your router IP:] ', placeholder = 'Typing IP\'s device')
+    return user, passwd, ip
