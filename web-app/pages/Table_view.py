@@ -205,32 +205,35 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
       if options:
         with st.expander(":green[Expand for getting Data from Router]"):
           with st.form("form10"):
-            user, passwd, router = component_login()
-            tab1_list_host= GET_ALIVE_HOST(router)
-            print("[TAB1] List host %s"%tab1_list_host)
+            # user, passwd, router = component_login()
+            # tab1_list_host= GET_ALIVE_HOST(router)
+            device_list = juniper_component_login()
+            print("[TAB1] Call juniper_component_login() ")
             submitted = st.form_submit_button(label= "Run")
             if submitted:
               with st.spinner('Wait for it...'):
                 try:
-                  for ip in tab1_list_host:
-                    with Device(host=ip, user= user, password= passwd) as dev:
-                      print('[TAB1] Get multiple table/view data')
-                      try:
-                        for option in options:
-                          table_object = GET_PYEZ_TABLEVIEW(dev= dev, data_type = option[:-5])
+                  # for ip in tab1_list_host:
+                  #   with Device(host=ip, user= user, password= passwd) as dev:
+                  print('[TAB1] Get multiple table/view data')
+                  try:
+                    for option in options:
+                      for dev in device_list:
+                        with dev.get('obj'):
+                          table_object = GET_PYEZ_TABLEVIEW(dev= dev.get('obj'), data_type = option[:-5])
                           table_object.get()
-                          dataframe= PYEZ_TABLEVIEW_TO_DATAFRAME(dev= dev, tableview_obj= table_object)
-                          with st.container(border= True):                 
-                            st.success('''
-                            Get table **%s** successfully from **%s** \n
-                            '''%(option,ip))
-                            st.dataframe(dataframe)
-                      except Exception as e:
-                          st.error(
-                          """
-                          - Can't get data by table/view. Review table/view
-                          """)
-                          print("[TAB1] Check exception %s"%e)
+                          dataframe= PYEZ_TABLEVIEW_TO_DATAFRAME(dev= dev.get('obj'), tableview_obj= table_object)
+                        with st.container(border= True):                 
+                          st.success('''
+                          Get table **%s** successfully from **%s** \n
+                          '''%(option,dev.get('ip')))
+                          st.dataframe(dataframe)
+                  except Exception as e:
+                      st.error(
+                      """
+                      - Can't get data by table/view. Review table/view
+                      """)
+                      print("[TAB1] Check exception %s"%e)
                 except Exception as e:
                   st.error(
                     """
@@ -426,23 +429,24 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
       print('[TAB2] Test table/view with router')
       #############################TAB2 Form test table/view #####################################
       with st.form("form1"):
-        user, passwd, router = component_login()
-        tab2_list_host= GET_ALIVE_HOST(router)
+        # user, passwd, router = component_login()
+        # tab2_list_host= GET_ALIVE_HOST(router)
+        device_list = juniper_component_login()
         submitted = st.form_submit_button(label= "Run", disabled= st.session_state.test_table)
         if submitted:
           with st.spinner('Wait for it...'):
             # time.sleep(1)
             try:
-              for ip in tab2_list_host:
-                with Device(host=ip, user= user, password= passwd) as dev:
-                  print('[TAB2] Are we connected?', dev.connected)
+              for dev in device_list:
+                with dev.get('obj'):
+                  print('[TAB2] Are we connected?', dev.get('obj').connected)
                   try:
                       myYAML="".join([add_table,"\n",add_view])
                       globals().update(FactoryLoader().load(yaml.load(myYAML, Loader=yaml.FullLoader)))
-                      exec('table_object = %s(dev)'%add_table.split(':')[0]) 
+                      exec('table_object = %s(dev.get(\'obj\'))'%add_table.split(':')[0]) 
                       table_object.get()
-                      dataframe= PYEZ_TABLEVIEW_TO_DATAFRAME(dev= dev, tableview_obj= table_object)
-                      with st.expander(":blue[Data from router %s :]"%ip):
+                      dataframe= PYEZ_TABLEVIEW_TO_DATAFRAME(dev= dev.get('obj'), tableview_obj= table_object)
+                      with st.expander(":blue[Data from router %s :]"%dev.get('ip')):
                         st.dataframe(dataframe)                 
                         st.success('''
                         Get successfully\n
@@ -707,9 +711,10 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
       ########################## TAB3 Test table/view ####################################################
       st.subheader('2. Try your edited table/view with your router')
       with st.form("form3"):
-        user, passwd, router = component_login()
-        tab3_list_host= GET_ALIVE_HOST(router)
-        print(tab3_list_host)
+        # user, passwd, router = component_login()
+        # tab3_list_host= GET_ALIVE_HOST(router)
+        device_list = juniper_component_login()
+        #print(tab3_list_host)
         submitted = st.form_submit_button(label= "Run", disabled= st.session_state.test_table_edit)
         if submitted:
           with st.spinner('Wait for it...'):
@@ -717,15 +722,15 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
             args_dict = yaml.safe_load(edit_table_args)
             #print(args_dict)
             try:
-              for ip in tab3_list_host:
-                with Device(host=ip, user= user, password= passwd) as dev:
+              for dev in device_list:
+                with dev.get('obj'):
                   try:
                     print("[TAB3] Call GET_PYEZ_TABLEVIEW")
-                    tv_obj = GET_PYEZ_TABLEVIEW(dev= dev, data_type = edit_table.split(':')[0][:-5], kwargs= args_dict)
+                    tv_obj = GET_PYEZ_TABLEVIEW(dev= dev.get('obj'), data_type = edit_table.split(':')[0][:-5], kwargs= args_dict)
                     tv_obj.get()
                     print("[TAB3] Call PYEZ_TABLEVIEW_TO_DATAFRAME [%s]"%tv_obj)
-                    dataframe= PYEZ_TABLEVIEW_TO_DATAFRAME(dev= dev, tableview_obj= tv_obj)
-                    with st.expander(":green[Data from host %s:]"%ip):
+                    dataframe= PYEZ_TABLEVIEW_TO_DATAFRAME(dev= dev.get('obj'), tableview_obj= tv_obj)
+                    with st.expander(":green[Data from host %s:]"%dev.get('ip')):
                       st.dataframe(dataframe)
                   except Exception as e:
                       st.error(
@@ -802,7 +807,7 @@ with st_stdout("code",tab6), st_stderr("code",tab7):
               file_out.write("\n")
               file_out.write(yaml.dump(dict_view_tab3, indent = 4))
               file_out.close()
-          print(f"[702][TAB3] Path is {edit_path_out}")
+          print(f"[TAB3] Path is {edit_path_out}")
                                              
           gitCommit(
             # repo_path=repo_path,

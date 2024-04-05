@@ -284,3 +284,44 @@ def component_login():
     passwd= st.text_input(':orange[Your password:] ', type= 'password', placeholder = 'Typing password')
     ip = st.text_input(':orange[Your router IP:] ', placeholder = 'Typing IP\'s device')
     return user, passwd, ip
+############### Streamlit juniper_component_login######################
+# [linhnt] add April 2024
+sys.path.insert(0, config.get('path_junos_tableview', {}).get('path_module_utils'))
+from NETWORK_FUNC import *
+def juniper_component_login():
+    import streamlit as st
+    from jnpr.junos import Device
+    list_device_dict=[] # save list of device dict
+    list_ip=[] # save list IP
+    input_dict={} # Save host, user, password
+    usable_input_option = ['host', 'user','passwd'] # Input from dir(Device)
+    # ip_input = st.text_input(':orange[Your IP subnet:] ', placeholder = 'Typing IP\'s device')
+    #for item in dir(Device):
+    for item in ["host", "user", "passwd", "port", "gather_facts", "mode", "auto_probe", "normalize", "conn_open_timeout"]:
+        if item in usable_input_option:
+            if item == 'passwd':
+                input_dict[item] = st.text_input(':orange[Your %s:]'%item, placeholder = 'Please input {}'.format(item), type= 'password')
+            else:
+                input_dict[item] = st.text_input(':orange[Your %s:]'%item, placeholder = 'Please input {}'.format(item))
+    # {host = x, user = y, pass  = z }
+    try:
+      list_ip = GET_ALIVE_HOST(input_dict['host'])
+    except Exception as e:
+      print(f"Check GET_ALIVE_HOST . Check command Error: {e}")
+    if isinstance(list_ip, list):
+      for ip in list_ip:
+        try:
+          device_dict = {}
+          # Connect to the Junos device
+          dev = Device(host=ip, user= input_dict.get('user'), password=input_dict.get('passwd'))
+          dev.open()
+          device_dict.update({'ip':ip})
+          device_dict.update({'user':input_dict.get('user')})
+          device_dict.update({'obj':dev})
+          dev.close()
+          list_device_dict.append(device_dict)
+        except Exception as e:
+          print(f"Check username/password. Error: {e}")
+    else:
+        print(f"Don't have alive host")
+    return list_device_dict
